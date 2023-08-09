@@ -2,5 +2,7 @@
 {
     public class Movie_Genre
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

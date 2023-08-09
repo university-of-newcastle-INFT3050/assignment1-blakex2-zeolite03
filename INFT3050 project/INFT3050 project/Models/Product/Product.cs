@@ -1,8 +1,5 @@
-﻿using INFT3050_project.Models.Product.Genre;
-using INFT3050_project.Models.Product.Subgenre;
-using INFT3050_project.Models.Product.Genre;
+﻿using INFT3050_project.Models.Product.Subgenre;
 using System.ComponentModel.DataAnnotations;
-using System.Security.Cryptography.X509Certificates;
 
 namespace INFT3050_project.Models.Product
 {
@@ -10,7 +7,7 @@ namespace INFT3050_project.Models.Product
     {
         public class Movie
         {
-            
+
             public int ProductID { get; set; }
 
             [Required(ErrorMessage = "Please enter a name.")]
@@ -23,19 +20,17 @@ namespace INFT3050_project.Models.Product
             public int? Description { get; set; }
 
             [Required(ErrorMessage = "Please enter a genre.")]
-            public string GenreId { get; set; }
             public Genre Genre { get; set; }
 
-            
+            public DateTime Published { get; set; }
 
-            public Book_Genre Book_Genre;
+            public User LastUpdatedBy { get; set; }
 
-            public Game_Genre Game_Genre;
-
-            public Movie_Genre Movie_Genre;
+            public DateTime LastUpdated { get; set; }
 
 
 
-           
+
         }
+    }
 }
