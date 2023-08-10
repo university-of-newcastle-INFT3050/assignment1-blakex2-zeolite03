@@ -5,8 +5,6 @@ namespace INFT3050_project.Models.Product
 {
     public class Product
     {
-        public class Movie
-        {
 
             public int ProductID { get; set; }
 
@@ -27,8 +25,6 @@ namespace INFT3050_project.Models.Product
             public User LastUpdatedBy { get; set; }
 
             public DateTime LastUpdated { get; set; }
-
-
 
 
         }
