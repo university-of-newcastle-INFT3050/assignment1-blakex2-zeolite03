@@ -1,7 +1,7 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
 
-namespace Assignment_1.Models
+namespace INFT3050_project.Models
 {
     public class Customers
     {

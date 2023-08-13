@@ -15,7 +15,7 @@ namespace INFT3050_project.Models
         public DbSet<Game_Genre> Game_Genres { get; set; } = null!;
         public DbSet<Movie_Genre> Movie_Genres { get; set; } = null!;
 
-
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
