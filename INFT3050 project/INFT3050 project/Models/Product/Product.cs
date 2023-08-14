@@ -9,24 +9,26 @@ namespace INFT3050_project.Models.Product
             public int ProductID { get; set; }
 
             [Required(ErrorMessage = "Please enter a name.")]
-            public string Name { get; set; }
+            public string? Name { get; set; }
 
             [Required(ErrorMessage = "Please enter a Author.")]
-            public int? Author { get; set; }
+            public String? Author { get; set; }
 
             [Required(ErrorMessage = "Please enter a Decsription.")]
-            public int? Description { get; set; }
+            public String? Description { get; set; }
 
             [Required(ErrorMessage = "Please enter a genre.")]
+            public String? GenreID { get; set; }
+
             public Genre Genre { get; set; }
 
             public DateTime Published { get; set; }
 
-            public User LastUpdatedBy { get; set; }
+            //public User LastUpdatedBy { get; set; }
 
-            public DateTime LastUpdated { get; set; }
+            //public DateTime LastUpdated { get; set; }
 
 
-        }
     }
+    
 }

@@ -8,23 +8,27 @@ namespace INFT3050_project.Models
         public int UserId { get; set; }
 
         //email is used as a username
-        public string Email { get; set; }
         [Required(ErrorMessage = "Please enter a Email.")]
         [MaxLength(255)]
-        public string Name { get; set; }
+        public string Email { get; set; }
+        
+        
         [Required(ErrorMessage = "Please enter a  name.")]
         [MaxLength(255)]
+        public string Name { get; set; }
+
 
         //so the hash function and salt function will need to be created for when a new patron creates an account
 
         //32 hexadecimal digits generated at random
-        public string Salt { get; set; }
         [MaxLength(32)]
+        public string Salt { get; set; }
+
 
         //SHA256 hash value of salt + password (password appended to salt value)
-
-        public string HashedPW { get; set; }
         [Required(ErrorMessage = "Please enter a password.")]
         [MaxLength(64)]
-    } 
+        public string HashedPW { get; set; }
+      
+    }
 }

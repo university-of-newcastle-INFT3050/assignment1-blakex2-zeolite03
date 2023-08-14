@@ -1,24 +1,25 @@
-﻿
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Assignment_1.Models
+namespace INFT3050_project.Models.Product
 {
-    public class Customers
+    public class Customer
     {
-        
-
-        
         //just making get and set for data that will happen whena customer account is created
         public int CustomersId { get; set; }
 
-        public string FirstName { get; set; } 
         [Required(ErrorMessage = "Please enter a first name.")]
-        public string LastName { get; set; }
+        public string? FirstName { get; set; }
         [Required(ErrorMessage = "Please enter a Last name.")]
-        public string Password { get; set; }
+        public string? LastName { get; set; }
         [Required(ErrorMessage = "Please enter a Password.")]
-        public string Email { get; set; }
+        public string? Password { get; set; }
         [Required(ErrorMessage = "Please enter a Email.")]
+        public string? Email { get; set; }
+        
+
+
+
 
     }
 }
