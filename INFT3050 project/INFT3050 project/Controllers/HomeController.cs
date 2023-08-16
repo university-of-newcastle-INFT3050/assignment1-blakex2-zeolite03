@@ -28,6 +28,10 @@ namespace INFT3050_project.Controllers
             return View();
         }
 
+        public IActionResult Test()
+        {
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
