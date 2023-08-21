@@ -16,12 +16,20 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\blake\OneDrive\Documents\GitHub\assignment1-blakex2-zeolite03\INFT3050 project\INFT3050 project
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Home/HomePage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIb21lUGFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Home/Test.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUZXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Shared/Error.cshtml]

@@ -18,10 +18,7 @@ namespace INFT3050_project.Models.Product
             public String? Description { get; set; }
 
             [Required(ErrorMessage = "Please enter a genre.")]
-            public String? GenreID { get; set; }
-
-            public Genre Genre { get; set; }
-
+            public int GenreID { get; set; }
             public DateTime Published { get; set; }
 
             //public User LastUpdatedBy { get; set; }
