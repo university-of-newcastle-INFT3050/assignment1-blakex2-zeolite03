@@ -1,4 +1,5 @@
 ﻿using INFT3050_project.Models;
+using INFT3050_project.Models.Product;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,12 +7,17 @@ namespace INFT3050_project.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        
 
-        public HomeController(ILogger<HomeController> logger)
+
+        private ShopContext context;
+
+        public HomeController(ShopContext ctx)
         {
-            _logger = logger;
+            context = ctx;
         }
+
+       
 
         public IActionResult Index()
         {
@@ -25,12 +31,20 @@ namespace INFT3050_project.Controllers
 
         public IActionResult HomePage()
         {
-            return View();
+            IQueryable<Product> products = context.Products;
+            var product= products.ToList();
+            
+            return View(product);
         }
 
         public IActionResult Test()
         {
             return View();
+        }
+        public IActionResult Login()
+        {
+            return View();
+
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

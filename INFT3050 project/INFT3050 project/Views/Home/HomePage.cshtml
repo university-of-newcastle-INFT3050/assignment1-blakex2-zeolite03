@@ -1,4 +1,4 @@
-﻿@model INFT3050_project.Models.Product.Product
+﻿@model IEnumerable<Product>
 
 @{
     ViewData["Title"] = "HomePage";
@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="HomePage">
+        <!--form asp-action="HomePage">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
@@ -39,7 +39,17 @@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
-        </form>
+        </form> -->
+        <table class="table table-bordered table-striped">
+            <tbody>
+                @foreach (var Product in Model)
+                {
+                    <tr>
+                        <td>@Product.Name</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 </div>
 
