@@ -42,6 +42,10 @@ namespace INFT3050_project
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=HomePage}/{id?}/{slug?}");
+
+                endpoints.MapControllerRoute(
+                    name: "custom",
+                    pattern: "{controller}/{action}/conf/{activeConf}/div/{activeDiv}");
             });
         }
     }
