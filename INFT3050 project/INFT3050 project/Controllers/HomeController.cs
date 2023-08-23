@@ -31,7 +31,7 @@ namespace INFT3050_project.Controllers
 
         public IActionResult HomePage()
         {
-            ViewBag.Book_Genre = context.Book_Genres;
+            ViewBag.Product = context.Products.FirstOrDefault();
             
             return View();
         }
