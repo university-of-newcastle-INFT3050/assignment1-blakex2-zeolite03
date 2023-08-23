@@ -1,5 +1,5 @@
 ﻿
-
+@model IEnumerable<Product>
 @{
     ViewData["Title"] = "HomePage";
 }
@@ -40,7 +40,12 @@
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form> -->
-        <p></p>
+        <ul>
+            @foreach(Product product in Model)
+            {
+            <li>@product.Name</li>
+            }
+        </ul>
     </div>
 </div>
 
