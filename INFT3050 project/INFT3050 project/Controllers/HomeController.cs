@@ -31,10 +31,9 @@ namespace INFT3050_project.Controllers
 
         public IActionResult HomePage()
         {
-            IQueryable<Product> products = context.Products;
-            var product= products.ToList();
+            ViewBag.Book_Genre = context.Book_Genres;
             
-            return View(product);
+            return View();
         }
 
         public IActionResult Test()

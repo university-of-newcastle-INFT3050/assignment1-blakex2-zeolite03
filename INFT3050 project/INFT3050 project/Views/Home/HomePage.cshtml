@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Product>
+﻿
 
 @{
     ViewData["Title"] = "HomePage";
@@ -40,16 +40,7 @@
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form> -->
-        <table class="table table-bordered table-striped">
-            <tbody>
-                @foreach (var Product in Model)
-                {
-                    <tr>
-                        <td>@Product.Name</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+        <p>@ViewBag.Book_Genres.Name</p>
     </div>
 </div>
 
