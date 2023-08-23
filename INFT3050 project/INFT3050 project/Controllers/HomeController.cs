@@ -60,9 +60,9 @@ namespace INFT3050_project.Controllers
 
         public IActionResult HomePage()
         {
-            ViewBag.products = context.Products;
+            var products = context.Product;
             
-            return View();
+            return View(products);
         }
 
         public IActionResult Test()
