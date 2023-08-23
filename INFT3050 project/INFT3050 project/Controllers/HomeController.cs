@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using INFT3050_project.Models;
+﻿using INFT3050_project.Models;
 using INFT3050_project.Models.Product;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -18,6 +16,7 @@ namespace INFT3050_project.Controllers
         {
             context = ctx;
         }
+
 
         //public ViewResult Index(string activeConf = "all", string activeDiv = "all")
         //{
@@ -45,6 +44,7 @@ namespace INFT3050_project.Controllers
         //    return View(Products);
         //}
 
+
         public IActionResult Index()
         {
             var genres = context.Genre.ToList();
@@ -60,6 +60,8 @@ namespace INFT3050_project.Controllers
 
         public IActionResult HomePage()
         {
+            ViewBag.products = context.Products;
+            
             return View();
         }
 
