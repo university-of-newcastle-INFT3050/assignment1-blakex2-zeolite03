@@ -20,8 +20,8 @@ namespace INFT3050_project.Models
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Product.Product>().HasData(
-                new Product.Product { ProductID = 1, Name = "TEST 1", Author = "testauthor", Description = "testdescription", GenreID = 1,  },
-                new Product.Product { ProductID = 2, Name = "TEST 2", Author = "testauthor2", Description = "testdescription2", GenreID = 2 }
+                new Product.Product { ProductID = 1, Name = "TEST 1", Author = "testauthor", Description = "testdescription",  },
+                new Product.Product { ProductID = 2, Name = "TEST 2", Author = "testauthor2", Description = "testdescription2" }
             );
 
 

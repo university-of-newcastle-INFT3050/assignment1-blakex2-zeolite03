@@ -11,6 +11,8 @@ namespace INFT3050_project.Models.Product
             [Required(ErrorMessage = "Please enter a name.")]
             public string? Name { get; set; }
 
+            public Genre Genre { get; set; }
+
             [Required(ErrorMessage = "Please enter a Author.")]
             public String? Author { get; set; }
 
@@ -18,7 +20,7 @@ namespace INFT3050_project.Models.Product
             public String? Description { get; set; }
 
             [Required(ErrorMessage = "Please enter a genre.")]
-            public int GenreID { get; set; }
+            //public int GenreID { get; set; }
             public DateTime Published { get; set; }
 
             //public User LastUpdatedBy { get; set; }
