@@ -15,8 +15,17 @@
     <div class="col-md-3">
         <h3 class="mt-3">Genre</h3>
         <div class="list-group">
+
+            @foreach (Product pro in Model)
+            {
+                <a asp-action="Index"
+                   asp-route-activeConf="@pro.Name"
+                   asp-route-activeDiv="@ViewBag.ActiveDiv">
+                    @pro.Name | @pro.GenreLink.Name
+                </a>
+            }
             
-            @foreach (Genre genre in ViewBag.Genre)
+            @*@foreach (Genre genre in ViewBag.Genre)
             {
                 <a asp-action="Index"
                    asp-route-activeConf="@genre.GenreID"
@@ -24,7 +33,7 @@
                    >
                     @genre.Name
                 </a>
-            }
+            }*@
         </div>
        @* <h3 class="mt-3">Division</h3>
         <div class="list-group">

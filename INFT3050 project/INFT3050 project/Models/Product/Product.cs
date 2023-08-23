@@ -1,5 +1,6 @@
 ﻿using INFT3050_project.Models.Product.Subgenre;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace INFT3050_project.Models.Product
 {
@@ -11,7 +12,9 @@ namespace INFT3050_project.Models.Product
             [Required(ErrorMessage = "Please enter a name.")]
             public string? Name { get; set; }
 
-            public Genre Genre { get; set; }
+        [ForeignKey("GenreLink")]
+            public int genre { get; set; }
+            public Genre GenreLink { get; set; }
 
             [Required(ErrorMessage = "Please enter a Author.")]
             public String? Author { get; set; }
