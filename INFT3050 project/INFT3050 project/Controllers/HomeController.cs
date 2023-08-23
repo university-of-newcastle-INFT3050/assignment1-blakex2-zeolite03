@@ -31,7 +31,7 @@ namespace INFT3050_project.Controllers
 
         public IActionResult HomePage()
         {
-           ViewBag.Products = context.Products.ToList();
+            ViewBag.products = context.Products;
             
             return View();
         }
