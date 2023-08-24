@@ -40,12 +40,24 @@
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form> -->
-        <ul>
-            @foreach(Product product in Model)
+        <h1> Products</h1>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th> Genre</th>
+                <th> Author</th>
+                <th>Description</th>
+            </tr>
+             @foreach(Product product in Model)
             {
-            <li>@product.Name</li>
+                <tr>
+                    <td>@product.Name</td>
+                    <td>@product.GenreLink.Name</td>
+                    <td>@product.Author</td>
+                    <td>@product.Description</td>
+                </tr>
             }
-        </ul>
+        </table>
     </div>
 </div>
 

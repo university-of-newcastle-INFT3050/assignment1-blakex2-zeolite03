@@ -60,7 +60,8 @@ namespace INFT3050_project.Controllers
 
         public IActionResult HomePage()
         {
-            var products = context.Product;
+            var genres = context.Genre.ToList();
+            var products = context.Product.ToList();
             
             return View(products);
         }
@@ -74,6 +75,12 @@ namespace INFT3050_project.Controllers
             return View();
 
         }
+
+        public IActionResult ProductEditor()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
