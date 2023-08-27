@@ -1,47 +1,42 @@
-﻿
+﻿<!--SO this is the product page created by blake eveleigh this is where i have been formatting and creating tables while figuring out how to get data into 
+    a view from a controller. this page is also currently figuring out how to sort that data now using a search bar.
+-->
 @model IEnumerable<Product>
 @{
     ViewData["Title"] = "HomePage";
 }
-
+<head>
+<style>
+body {background-color: beige;}
+h1   {color: blue;}
+table, th, td {
+  border: 1px solid black;
+  border-radius: 10px;
+  ;
+}
+</style>
+</head>
 <h1>HomePage</h1>
 
 <h4>Product</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <!--form asp-action="HomePage">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+    
+        
+        <div class="row">
+            <div class="column" style="float: left;  width: 90%;"><p></p></div>
+            <div class="column" style="float: left;  width: 10%;">
+            <form method="post" class="searchForm">
+                <input type="text" name="searchString" />
+                <input type="submit" value="Search" />
+            </form>
             </div>
-            <div class="form-group">
-                <label asp-for="Author" class="control-label"></label>
-                <input asp-for="Author" class="form-control" />
-                <span asp-validation-for="Author" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="GenreID" class="control-label"></label>
-                <select asp-for="GenreID" class ="form-control" asp-items="ViewBag.GenreID"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Published" class="control-label"></label>
-                <input asp-for="Published" class="form-control" />
-                <span asp-validation-for="Published" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form> -->
+        </div>
+
+        
         <h1> Products</h1>
-        <table>
+        <h2><u>Movies</u></h2>
+        <table >
             <tr>
                 <th>Name</th>
                 <th> Genre</th>
@@ -50,16 +45,72 @@
             </tr>
              @foreach(Product product in Model)
             {
+            if (product.GenreLink.Name == "Movies" )
+               {
+                   //if(product.Name == )
                 <tr>
                     <td>@product.Name</td>
                     <td>@product.GenreLink.Name</td>
                     <td>@product.Author</td>
-                    <td>@product.Description</td>
+                    <td style="border-radius: 50px;">@product.Description</td>
                 </tr>
+               }
             }
         </table>
-    </div>
+    
 </div>
+
+<div>
+    <h2 ><u>Games</u></h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th> Genre</th>
+            <th> Author</th>
+            <th>Description</th>
+        </tr>
+        @foreach (Product product in Model)
+        {
+            if (product.GenreLink.Name == "Games")
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>@product.GenreLink.Name</td>
+                    <td>@product.Author</td>
+                    <td style="border-radius: 50px;">@product.Description</td>
+                </tr>
+            }
+        }
+    </table>
+</div>
+
+<div>
+    <h2><u>Books</u></h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th> Genre</th>
+            <th> Author</th>
+            <th>Description</th>
+        </tr>
+        @foreach (Product product in Model)
+        {
+            if (product.GenreLink.Name == "Books")
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>@product.GenreLink.Name</td>
+                    <td>@product.Author</td>
+                    <td style="border-radius: 50px;">@product.Description</td>
+                </tr>
+            }
+        }
+    </table>
+</div>
+
+
 
 <div>
     <a asp-action="Index">Back to List</a>
