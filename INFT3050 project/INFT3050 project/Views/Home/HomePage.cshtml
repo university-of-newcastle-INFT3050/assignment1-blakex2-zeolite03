@@ -5,15 +5,22 @@
 @{
     ViewData["Title"] = "HomePage";
 }
+
+@{
+   
+}
+
 <head>
 <style>
-body {background-color: beige;}
-h1   {color: blue;}
+body {background-color: aliceblue;}
+h1   {color: black;}
 table, th, td {
   border: 1px solid black;
   border-radius: 10px;
-  ;
+  padding: 10px ;
+  
 }
+th {font-weight:800;}
 </style>
 </head>
 <h1>HomePage</h1>
@@ -27,7 +34,7 @@ table, th, td {
             <div class="column" style="float: left;  width: 90%;"><p></p></div>
             <div class="column" style="float: left;  width: 10%;">
             <form method="post" class="searchForm">
-                <input type="text" name="searchString" />
+                <input type="text" name="searchString" id="myInput" />
                 <input type="submit" value="Search" />
             </form>
             </div>
@@ -35,7 +42,7 @@ table, th, td {
 
         
         <h1> Products</h1>
-        <h2><u>Movies</u></h2>
+    <h2 style ="padding: 20px"><u>Movies</u></h2>
         <table >
             <tr>
                 <th>Name</th>
@@ -43,25 +50,26 @@ table, th, td {
                 <th> Author</th>
                 <th>Description</th>
             </tr>
-             @foreach(Product product in Model)
-            {
-            if (product.GenreLink.Name == "Movies" )
-               {
-                   //if(product.Name == )
-                <tr>
-                    <td>@product.Name</td>
-                    <td>@product.GenreLink.Name</td>
-                    <td>@product.Author</td>
-                    <td style="border-radius: 50px;">@product.Description</td>
-                </tr>
-               }
-            }
+            @foreach(Product product in Model)
+                {
+                if (product.GenreLink.Name == "Movies" )
+                    {
+                        //if(product.Name == )
+                    <tr>
+                        <td>@product.Name</td>
+                    <td >@product.GenreLink.Name</td>
+                        <td>@product.Author</td>
+                        <td style="border-radius: 50px;">@product.Description</td>
+                    </tr>
+                    }
+                }
+            
         </table>
     
 </div>
 
 <div>
-    <h2 ><u>Games</u></h2>
+    <h2 style="padding: 20px"><u>Games</u></h2>
 
     <table>
         <tr>
@@ -86,7 +94,7 @@ table, th, td {
 </div>
 
 <div>
-    <h2><u>Books</u></h2>
+    <h2 style="padding: 20px"><u>Books</u></h2>
 
     <table>
         <tr>
@@ -109,6 +117,7 @@ table, th, td {
         }
     </table>
 </div>
+
 
 
 

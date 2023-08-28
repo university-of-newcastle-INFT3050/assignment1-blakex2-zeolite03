@@ -70,7 +70,7 @@ namespace INFT3050_project.Controllers
         public async Task OnPostAsync()
         {
             var searchString = Request.Form["searchString"];
-            var products = await context.Product.Where(x => x.Name.Contains(searchString)).ToListAsync();
+            //= await context.Product.Where(x => x.Name.Contains(searchString)).ToListAsync();
             
 
         }
