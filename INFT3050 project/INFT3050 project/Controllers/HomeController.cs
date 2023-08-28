@@ -1,6 +1,7 @@
 ﻿using INFT3050_project.Models;
 using INFT3050_project.Models.Product;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace INFT3050_project.Controllers
@@ -66,6 +67,13 @@ namespace INFT3050_project.Controllers
             return View(products);
         }
 
+        public async Task OnPostAsync()
+        {
+            var searchString = Request.Form["searchString"];
+            var products = await context.Product.Where(x => x.Name.Contains(searchString)).ToListAsync();
+            
+
+        }
         public IActionResult Test()
         {
             return View();
