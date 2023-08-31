@@ -1,0 +1,140 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "HomePage";
+}
+
+@{
+
+}
+
+<head>
+    <style>
+        body {
+            background-color: aliceblue;
+        }
+
+        h1 {
+            color: black;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        th {
+            font-weight: 800;
+        }
+    </style>
+</head>
+<h1>HomePage</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="row">
+
+
+    <div class="row">
+        <div class="column" style="float: left;  width: 90%;"><p></p></div>
+        <div class="column" style="float: left;  width: 10%;">
+            <form method="post" class="searchForm">
+                <input type="text" name="searchString" id="myInput" />
+                <input type="submit" value="Search" />
+            </form>
+        </div>
+    </div>
+
+
+    <h1> Editor</h1>
+    <h2 style="padding: 20px"><u>Movies</u></h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            
+            <th> Author</th>
+            <th> Edit</th>
+        </tr>
+        @foreach (Product product in Model)
+        {
+            if (product.GenreLink.Name == "Movies")
+            {
+                //if(product.Name == )
+                <tr>
+                    <td>@product.Name</td>
+                    
+                    <td>@product.Author</td>
+                   <td><a asp-controller="Product" asp-action="Edit" title="Edit" asp-route-id="@product.ID">Edit</a>
+                    </td>
+
+
+                </tr>
+            }
+        }
+
+    </table>
+
+</div>
+
+<div>
+    <h2 style="padding: 20px"><u>Games</u></h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th> Genre</th>
+            <th> Author</th>
+            <th>Description</th>
+        </tr>
+        @foreach (Product product in Model)
+        {
+            if (product.GenreLink.Name == "Games")
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>@product.GenreLink.Name</td>
+                    <td>@product.Author</td>
+                    <td style="border-radius: 50px;">@product.Description</td>
+                </tr>
+            }
+        }
+    </table>
+</div>
+
+<div>
+    <h2 style="padding: 20px"><u>Books</u></h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th> Genre</th>
+            <th> Author</th>
+            <th>Description</th>
+        </tr>
+        @foreach (Product product in Model)
+        {
+            if (product.GenreLink.Name == "Books")
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>@product.GenreLink.Name</td>
+                    <td>@product.Author</td>
+                    <td style="border-radius: 50px;">@product.Description</td>
+                </tr>
+            }
+        }
+    </table>
+</div>
+
+
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

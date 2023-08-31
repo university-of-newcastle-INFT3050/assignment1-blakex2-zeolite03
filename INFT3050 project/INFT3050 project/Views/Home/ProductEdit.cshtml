@@ -1,0 +1,72 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "HomePage";
+}
+
+@{
+
+}
+
+<head>
+    <style>
+        body {
+            background-color: aliceblue;
+        }
+
+        h1 {
+            color: black;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        th {
+            font-weight: 800;
+        }
+    </style>
+</head>
+<h1>HomePage</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="row">
+
+
+  
+
+
+    <h1> Editor</h1>
+    <h2 style="padding: 20px"><u>Movies</u></h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            
+            <th> Author</th>
+            
+        </tr>
+
+                <tr>
+                    <td>@Model.ID</td>
+                    
+                    <td>@Model.Author</td>
+              
+                </tr>
+            
+        
+
+    </table>
+
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
