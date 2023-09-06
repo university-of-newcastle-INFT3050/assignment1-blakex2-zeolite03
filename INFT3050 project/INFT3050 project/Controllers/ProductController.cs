@@ -75,10 +75,26 @@ namespace INFT3050_project.Controllers
             // POST: ProductController/Edit/5
             [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(Product product)
         {
             try
             {
+
+                if (ModelState.IsValid)
+                {
+                    if (product.ID == 0)
+                        context.Product.Add(product);
+                    else
+                        context.Product.Update(product);
+                    context.SaveChanges();
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewBag.Action = (product.ID == 0) ? "Add" : "Edit";
+                    ViewBag.Genres = context.Product.OrderBy(t => t.Name).ToList();
+                    return View(product);
+                }
                 //logic to save to db here
                 return RedirectToRoute(new { controller = "Product", action = "EditorView" });
                 

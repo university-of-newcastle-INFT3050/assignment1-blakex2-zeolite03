@@ -1,11 +1,42 @@
 ﻿@model Product
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+
+
 @{
 }
 <h1>@Model.Name</h1>
-<form asp-controller="Product" asp-action="Edit">
+<form asp-controller="Product" asp-action="Edit" method="post">
     <input type="text" value="@Model.Name" id="Name" name="Name"/>
     <input type="submit" value="Save"/>
 </form>
+
+
+
+
+@*<h2>@Model.Name</h2>
+
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Name">Name</label>
+        <input asp-for="Name" class="form-control">
+    </div>
+
+
+
+    <div class="form-group">
+        <label asp-for="GenreLink.genreID">Genre</label>
+        <select asp-for="GenreLink.genreID" class="form-control">
+            <option value="">select a genre</option> 
+            @foreach (Genre g in ViewBag.Genres)
+            {
+                <option value="@g.genreID">@g.Name</option>
+            }
+        </select>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary">@ViewBag.Action</button>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Cancel</a>
+</form>*@
