@@ -1,5 +1,7 @@
 ﻿using INFT3050_project.Models;
+using INFT3050_project.Models.Managers;
 using INFT3050_project.Models.Product;
+using INFT3050_project.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -65,8 +67,13 @@ namespace INFT3050_project.Controllers
         // GET: ProductController/Edit/5
         public ActionResult Edit(int id)
         {
-            Product product = context.Product.Find(id);
-            return View(product);
+            ProductViewModel model = new ProductViewModel()
+            {
+                Product = context.Product.Find(id),
+                SubGenreViewModel = ShopManager.GetViewModel(context)
+            };
+            
+            return View(model);
         }
 
 

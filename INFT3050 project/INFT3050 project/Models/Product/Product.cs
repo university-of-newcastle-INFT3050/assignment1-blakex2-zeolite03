@@ -16,6 +16,8 @@ namespace INFT3050_project.Models.Product
             public int genre { get; set; }
             public Genre GenreLink { get; set; }
 
+        public int subGenre { get; set; }
+
             [Required(ErrorMessage = "Please enter a Author.")]
             public String? Author { get; set; }
 

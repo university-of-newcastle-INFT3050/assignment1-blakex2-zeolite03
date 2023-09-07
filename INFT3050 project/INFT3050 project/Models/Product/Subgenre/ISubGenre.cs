@@ -2,11 +2,11 @@
 
 namespace INFT3050_project.Models.Product.Subgenre
 {
-    [Table("Movie_Genre")]
-    public class Game_Genre : ISubGenre
+    public interface ISubGenre
     {
-        [Column("subGenreID")]
+        
         public int Id { get; set; }
         public string Name { get; set; }
+
     }
 }
