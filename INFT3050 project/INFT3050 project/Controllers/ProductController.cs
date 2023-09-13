@@ -84,6 +84,7 @@ namespace INFT3050_project.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Product product)
         {
+            var name = Request.Form["Name"];
             try
             {
 

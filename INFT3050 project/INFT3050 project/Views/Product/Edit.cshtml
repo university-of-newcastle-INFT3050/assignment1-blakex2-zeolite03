@@ -2,17 +2,50 @@
 @using INFT3050_project.Models.Product.Subgenre
 @model ProductViewModel
 
+<script>
+    function SubSelect() {
+        SubGenreHideALL();
+        var IDinput = parseInt(document.getElementById("Product_genre").value);
+        switch (IDinput) {
+            case 1: 
+            SubGenreShow("1");
+                break;
+            case 2:
+                SubGenreShow("2");
+                break;
+            case 3:
+            SubGenreShow("3");
+                break;
+        }
+    }
+
+    function SubGenreShow(subSelect) {
+
+        var x = document.getElementById(subSelect);
+        x.style.display = "block";
+    }
+
+    function SubGenreHideALL() {
+        document.getElementById("1").style.display = "none"
+        document.getElementById("2").style.display = "none"
+        document.getElementById("3").style.display = "none"
+    }
+
+</script>
+
 
 @{
 }
 <h1>@Model.Product.Name</h1>
 <form asp-controller="Product" asp-action="Edit" method="post">
-    <input type="text" value="@Model.Product.Name" id="Name" name="Name"/>
-    <input type="text" value="@Model.Product.Author" id="Author" name="Author"
+    <input type="text" value="@Model.Product.Name" id="Name" asp-for="@Model.Product.Name" />
+    <input type="text" value="@Model.Product.Author" id="Author" asp-for="@Model.Product.Author" />
+    <input type="text" value="@Model.Product.Description" id="Description" asp-for="@Model.Product.Description" />
+ 
 
-    <div class="form-group">
+    <div id="genre" class="form-group">
         <label asp-for="@Model.Product.genre">Genre</label>
-        <select asp-for="@Model.Product.genre" class="form-control">
+        <select onchange="SubSelect()" asp-for="@Model.Product.genre" class="form-control">
             <option value="">select a genre</option>
             @foreach (Genre g in Model.SubGenreViewModel.Genres)
             {
@@ -21,8 +54,8 @@
         </select>
     </div>
 
-    <div id="1" class="form-group" >
-        <label asp-for="@Model.Product.subGenre">Genre</label>
+    <label asp-for="@Model.Product.subGenre">SubGenre</label>
+    <div id="1" class="form-group" style="display:none" >
         <select asp-for="@Model.Product.subGenre" class="form-control">
             <option value="">select a subgenre</option>
             @foreach (ISubGenre g in Model.SubGenreViewModel.GetSubGenreByGenreId(1))
@@ -32,8 +65,8 @@
         </select>
     </div>
 
-    <div id="2" class="form-group">
-        <label asp-for="@Model.Product.subGenre">Genre</label>
+    <div id="2" class="form-group" style="display:none">
+        @*<label asp-for="@Model.Product.subGenre">SubGenre</label>*@
         <select asp-for="@Model.Product.subGenre" class="form-control">
             <option value="">select a subgenre</option>
             @foreach (ISubGenre g in Model.SubGenreViewModel.GetSubGenreByGenreId(2))
@@ -43,8 +76,8 @@
         </select>
     </div>
 
-    <div id="3" class="form-group">
-        <label asp-for="@Model.Product.subGenre">Genre</label>
+    <div id="3" class="form-group" sstyle="display:none">
+        @*<label asp-for="@Model.Product.subGenre">Genre</label>*@
         <select asp-for="@Model.Product.subGenre" class="form-control">
             <option value="">select a subgenre</option>
             @foreach (ISubGenre g in Model.SubGenreViewModel.GetSubGenreByGenreId(3))
@@ -56,31 +89,6 @@
 
     <input type="submit" value="Save"/>
 </form>
-
-<script>
-    function SubSelect(@Model.Product.genre) {
-        switch (int GenreId)
-        {
-                case 1: SubGenreHide("1");
-                break;
-                case 2: SubGenreHide("2");
-                break;
-                case 3: SubeGenreHide("2");
-        }
-
-    }
-
-
-    function SubGenreHide(String subSelect) {
-       
-      var x = document.getElementById(subSelect);
-      if (x.style.display === "none") {
-        x.style.display = "block";
-      } else {
-        x.style.display = "none";
-      }
-    }
-</script>
 
 
 

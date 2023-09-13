@@ -1,4 +1,5 @@
 ﻿using INFT3050_project.Models.Product.Subgenre;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -14,6 +15,7 @@ namespace INFT3050_project.Models.Product
 
         [ForeignKey("GenreLink")]
             public int genre { get; set; }
+        [ValidateNever]
             public Genre GenreLink { get; set; }
 
         public int subGenre { get; set; }
