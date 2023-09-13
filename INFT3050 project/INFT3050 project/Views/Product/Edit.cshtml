@@ -1,14 +1,86 @@
-﻿@model Product
+﻿@using INFT3050_project.ViewModels
+@using INFT3050_project.Models.Product.Subgenre
+@model ProductViewModel
 
 
 @{
 }
-<h1>@Model.Name</h1>
+<h1>@Model.Product.Name</h1>
 <form asp-controller="Product" asp-action="Edit" method="post">
-    <input type="text" value="@Model.Name" id="Name" name="Name"/>
+    <input type="text" value="@Model.Product.Name" id="Name" name="Name"/>
+    <input type="text" value="@Model.Product.Author" id="Author" name="Author"
+
+    <div class="form-group">
+        <label asp-for="@Model.Product.genre">Genre</label>
+        <select asp-for="@Model.Product.genre" class="form-control">
+            <option value="">select a genre</option>
+            @foreach (Genre g in Model.SubGenreViewModel.Genres)
+            {
+                <option value="@g.genreID">@g.Name</option>
+            }
+        </select>
+    </div>
+
+    <div id="1" class="form-group" >
+        <label asp-for="@Model.Product.subGenre">Genre</label>
+        <select asp-for="@Model.Product.subGenre" class="form-control">
+            <option value="">select a subgenre</option>
+            @foreach (ISubGenre g in Model.SubGenreViewModel.GetSubGenreByGenreId(1))
+            {
+                <option value="@g.Id">@g.Name</option>
+            }
+        </select>
+    </div>
+
+    <div id="2" class="form-group">
+        <label asp-for="@Model.Product.subGenre">Genre</label>
+        <select asp-for="@Model.Product.subGenre" class="form-control">
+            <option value="">select a subgenre</option>
+            @foreach (ISubGenre g in Model.SubGenreViewModel.GetSubGenreByGenreId(2))
+            {
+                <option value="@g.Id">@g.Name</option>
+            }
+        </select>
+    </div>
+
+    <div id="3" class="form-group">
+        <label asp-for="@Model.Product.subGenre">Genre</label>
+        <select asp-for="@Model.Product.subGenre" class="form-control">
+            <option value="">select a subgenre</option>
+            @foreach (ISubGenre g in Model.SubGenreViewModel.GetSubGenreByGenreId(3))
+            {
+                <option value="@g.Id">@g.Name</option>
+            }
+        </select>
+    </div>
+
     <input type="submit" value="Save"/>
 </form>
 
+<script>
+    function SubSelect(@Model.Product.genre) {
+        switch (int GenreId)
+        {
+                case 1: SubGenreHide("1");
+                break;
+                case 2: SubGenreHide("2");
+                break;
+                case 3: SubeGenreHide("2");
+        }
+
+    }
+
+
+    function SubGenreHide(String subSelect) {
+       
+      var x = document.getElementById(subSelect);
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+</script>
 
 
 

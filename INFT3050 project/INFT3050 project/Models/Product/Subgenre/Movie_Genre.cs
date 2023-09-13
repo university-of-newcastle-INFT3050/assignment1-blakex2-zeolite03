@@ -1,7 +1,11 @@
-﻿namespace INFT3050_project.Models.Product.Subgenre
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace INFT3050_project.Models.Product.Subgenre
 {
-    public class Movie_Genre
+    [Table("Movie_genre")]
+    public class Movie_Genre : ISubGenre
     {
+        [Column("subGenreID")]
         public int Id { get; set; }
         public string Name { get; set; }
     }
