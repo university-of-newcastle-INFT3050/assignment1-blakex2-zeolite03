@@ -7,9 +7,9 @@
 <h1>View</h1>
 
 <div>
-    <form asp-controller="Login" asp-action="Edit" method="post">
-        <input type="text" value="useername" />
-        <input type="text" value="password" />
+    <form asp-controller="Login" asp-action="CheckLogin" method="post">
+        <input type="text" value="username" name="username"/>
+        <input type="text" value="password" name="password" />
         <input type="submit" value="Login" />
     </form>
     <h4>User</h4>

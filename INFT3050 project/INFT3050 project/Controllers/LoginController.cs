@@ -2,6 +2,8 @@
 using INFT3050_project.Models.Product;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography;
 
 namespace INFT3050_project.Controllers
 {
@@ -87,6 +89,23 @@ namespace INFT3050_project.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult CheckLogin(int id)
+        {
+           
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CheckLogin(FormCollection Form)
+        {
+            var username = Form["username"];
+            var password = Form["password"];
+            HashAlgorithm sha = SHA256.Create();
+            var result = sha.ComputeHash();
+            return View();
         }
     }
 }
