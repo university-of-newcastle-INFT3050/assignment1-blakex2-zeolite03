@@ -1,6 +1,7 @@
 ﻿using INFT3050_project.Models.Product;
 using INFT3050_project.Models.Product.Subgenre;
 using Microsoft.EntityFrameworkCore;
+using INFT3050_project.Models;
 namespace INFT3050_project.Models
 {
     public class ShopContext : DbContext
@@ -17,6 +18,7 @@ namespace INFT3050_project.Models
         public DbSet<Book_Genre> Book_Genres { get; set; } = null!;
         public DbSet<Game_Genre> Game_Genres { get; set; } = null!;
         public DbSet<Movie_Genre> Movie_Genres { get; set; } = null!;
+        public DbSet<INFT3050_project.Models.User>? User { get; set; }
 
         
     

@@ -2,12 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\INFT3050 project",
+    "\\INFT3050 project\\Controllers",
     "\\INFT3050 project\\Migrations",
-    "\\INFT3050 project\\Models",
     "\\INFT3050 project\\Models\\Product",
     "\\INFT3050 project\\Views",
-    "\\INFT3050 project\\Views\\Home"
+    "\\INFT3050 project\\Views\\Home",
+    "\\INFT3050 project\\Views\\Login",
+    "\\INFT3050 project\\Views\\Product",
+    "\\INFT3050 project\\Views\\Shared"
   ],
-  "SelectedNode": "\\INFT3050 project\\Views\\Home\\HomePage.cshtml",
+  "SelectedNode": "\\INFT3050 project\\Controllers\\HomeController.cs",
   "PreviewInSolutionExplorer": false
 }
