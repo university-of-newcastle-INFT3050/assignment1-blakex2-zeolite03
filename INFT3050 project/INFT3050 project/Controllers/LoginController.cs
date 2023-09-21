@@ -1,9 +1,11 @@
 ﻿using INFT3050_project.Models;
 using INFT3050_project.Models.Product;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace INFT3050_project.Controllers
 {
@@ -91,21 +93,37 @@ namespace INFT3050_project.Controllers
             }
         }
 
-        public ActionResult CheckLogin(int id)
+        public ActionResult LoginPage(int id)
         {
            
             return View();
         }
 
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CheckLogin(FormCollection Form)
+        public ActionResult LoginPage(IFormCollection Form)
         {
             var username = Form["username"];
             var password = Form["password"];
-            HashAlgorithm sha = SHA256.Create();
-            var result = sha.ComputeHash();
+            var HashPass = HashPasword(password, out var salt);
+
             return View();
+        }
+
+        string HashPasword(string password, out byte[] salt)
+        {
+            const int keySize = 64;
+            const int iterations = 350000;
+            HashAlgorithmName hashAlgorithm = HashAlgorithmName.SHA512;
+            salt = RandomNumberGenerator.GetBytes(keySize);
+            var hash = Rfc2898DeriveBytes.Pbkdf2(
+                Encoding.UTF8.GetBytes(password),
+                salt,
+                iterations,
+                hashAlgorithm,
+                keySize);
+            return Convert.ToHexString(hash);
         }
     }
 }
