@@ -111,6 +111,13 @@ namespace INFT3050_project.Controllers
             return View();
         }
 
+        public ActionResult Recovery() 
+        {
+
+            return View();
+        }
+
+
         string HashPasword(string password, out byte[] salt)
         {
             const int keySize = 64;

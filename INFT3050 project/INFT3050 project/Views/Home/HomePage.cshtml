@@ -53,6 +53,7 @@ table, th, td {
                     <td>@product.GenreLink.Name</td>
                     <td>@product.Author</td>
                     <td style="border-radius: 50px;">@product.Description</td>
+                    <td><a asp-controller="Home" asp-action="Details" title="Details" asp-route-id="@product.ID">Details</a>
                 </tr>
                }
             }

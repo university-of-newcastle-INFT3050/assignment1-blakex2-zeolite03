@@ -1,5 +1,7 @@
 ﻿using INFT3050_project.Models;
+using INFT3050_project.Models.Managers;
 using INFT3050_project.Models.Product;
+using INFT3050_project.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
@@ -24,6 +26,17 @@ namespace INFT3050_project.Controllers
             var _products = context.Product.OrderBy(t => t.Name).ToList();
 
             return View(_products);
+        }
+
+        public IActionResult Details(int id)
+        {
+            ProductViewModel model = new ProductViewModel()
+            {
+                Product = context.Product.Find(id),
+                SubGenreViewModel = ShopManager.GetViewModel(context)
+            };
+
+            return View(model);
         }
 
         public IActionResult Privacy()

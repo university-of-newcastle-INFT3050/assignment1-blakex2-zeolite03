@@ -41,6 +41,7 @@
     <input type="text" value="@Model.Product.Name" id="Name" asp-for="@Model.Product.Name" />
     <input type="text" value="@Model.Product.Author" id="Author" asp-for="@Model.Product.Author" />
     <input type="text" value="@Model.Product.Description" id="Description" asp-for="@Model.Product.Description" />
+    <input type="datetime" value="@Model.Product.Published" id="Published" asp-for="@Model.Product.Published" />
  
 
     <div id="genre" class="form-group">
@@ -58,7 +59,7 @@
     <div id="1" class="form-group" style="display:none" >
         <select asp-for="@Model.Product.subGenre" class="form-control">
             <option value="">select a subgenre</option>
-            @foreach (ISubGenre g in Model.SubGenreViewModel.GetSubGenreByGenreId(1))
+            @foreach (ISubGenre g in Model.SubGenreViewModel.GetSubGenreByGenreId(Model.Product.subGenre))
             {
                 <option value="@g.Id">@g.Name</option>
             }

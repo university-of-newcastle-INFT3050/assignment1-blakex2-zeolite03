@@ -28,7 +28,7 @@
         }
     </style>
 </head>
-<h1>HomePage</h1>
+<h1>Editor view</h1>
 
 <h4>Product</h4>
 <hr />
@@ -85,6 +85,7 @@
             <th> Genre</th>
             <th> Author</th>
             <th>Description</th>
+            
         </tr>
         @foreach (Product product in Model)
         {
@@ -95,6 +96,7 @@
                     <td>@product.GenreLink.Name</td>
                     <td>@product.Author</td>
                     <td style="border-radius: 50px;">@product.Description</td>
+                    
                 </tr>
             }
         }
@@ -110,6 +112,7 @@
             <th> Genre</th>
             <th> Author</th>
             <th>Description</th>
+            
         </tr>
         @foreach (Product product in Model)
         {
@@ -120,6 +123,7 @@
                     <td>@product.GenreLink.Name</td>
                     <td>@product.Author</td>
                     <td style="border-radius: 50px;">@product.Description</td>
+                    
                 </tr>
             }
         }
