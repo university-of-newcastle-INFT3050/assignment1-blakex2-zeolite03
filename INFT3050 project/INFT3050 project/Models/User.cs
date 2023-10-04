@@ -24,7 +24,7 @@ namespace INFT3050_project.Models
         //SHA256 hash value of salt + password (password appended to salt value)
         [Required(ErrorMessage = "Please enter a password.")]
         [MaxLength(64)]
-        public string HashedPW { get; set; }
+        public string HashPW { get; set; }
         [Required(ErrorMessage = "Please enter a name.")]
         [MaxLength(255)]
         public string Name { get; set; }

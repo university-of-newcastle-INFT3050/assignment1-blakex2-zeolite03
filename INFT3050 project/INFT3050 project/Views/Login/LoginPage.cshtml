@@ -1,4 +1,4 @@
-﻿@model INFT3050_project.Models.User
+﻿@model INFT3050_project.ViewModels.LoginViewModel
 
 @{
     ViewData["Title"] = "View";
@@ -6,19 +6,32 @@
 
 <h1>View</h1>
 
+
 <div>
-    <form asp-controller="Login" asp-action="CheckLogin" method="post">
-        <input type="text" value="username" name="username" asp-for="@Model.UserName" />
-        <input type="text" value="password" name="password" asp-for="@Model.HashedPW" />
-        <input type="submit" value="Login" />
-    </form>
-   
-    
+    <form asp-controller="Login" asp-action="LoginPage" method="post">
+        <div>
+            <label asp-for="UserName"></label>
+            <input asp-for="UserName" />
+            <span asp-validation-for="UserName"></span>
+        </div>
+        <div>
+            <label asp-for="HashPW">Password</label>
+            <input asp-for="HashPW" type="password" />
+            <span asp-validation-for="HashPW"></span>
+        </div>
+        <div>
+            <button type="submit">Login</button>
+        </div>
+    </form>  
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.UserId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+
+
 <div>
     <button asp-controller="Login" asp-action="Recovery" formmethod="get">Forgot Password</button>
+    <a href="@Url.Action("CreateAccountPage", "Login")" class="btn btn-primary">Go to New View</a>
+</div>
+
+<div>
+   
 </div>

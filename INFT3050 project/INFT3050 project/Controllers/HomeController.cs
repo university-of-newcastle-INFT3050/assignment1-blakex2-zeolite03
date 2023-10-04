@@ -63,11 +63,7 @@ namespace INFT3050_project.Controllers
         {
             return View();
         }
-        public IActionResult Login()
-        {
-            return View();
-
-        }
+  
 
         public IActionResult EditorView()
         {
