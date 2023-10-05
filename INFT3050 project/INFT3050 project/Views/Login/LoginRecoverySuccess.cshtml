@@ -1,0 +1,18 @@
+﻿@using INFT3050_project.ViewModels
+@model LoginViewModel 
+
+
+<h2>Login Recovery Success</h2>
+<p>for the purposes of this project, it is beyond the scope to send an email. this page instead, acts as an example of what the email would display to the user, with the link being able to reset your password</p>
+
+<div>
+    <strong>Email:</strong> @Model.Email
+</div>
+
+<div>
+    <strong>Username:</strong> @Model.UserName
+</div>
+
+<div>
+    @Html.ActionLink("Reset Password", "LoginRecoveryReset", new { @class = "btn btn-primary" })
+</div>

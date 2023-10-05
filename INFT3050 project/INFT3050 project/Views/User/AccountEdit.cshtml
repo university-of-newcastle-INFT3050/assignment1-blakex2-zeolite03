@@ -1,0 +1,9 @@
+﻿@using INFT3050_project.ViewModels
+@model LoginViewModel
+
+<h1>@Model.UserName</h1>
+<form asp-controller="Product" asp-action="Edit" method="post">
+    <input type="text" value="@Model.UserName" id="UserName" asp-for="@Model.UserName" />
+    <input type="text" value="@Model.Email" id="Author" asp-for="@Model.Email" />
+
+    </form>

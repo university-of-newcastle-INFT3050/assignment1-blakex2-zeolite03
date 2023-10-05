@@ -114,7 +114,7 @@ namespace INFT3050_project.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LoginPage(LoginViewModel model)
         {
-           
+
             if (ModelState.IsValid)
             {
 
@@ -169,11 +169,36 @@ namespace INFT3050_project.Controllers
             return IsValid;
         }
 
-        public ActionResult Recovery()
+        public IActionResult LoginRecovery()
         {
-
             return View();
         }
+
+        public ActionResult LoginRecovery(string email)
+        {
+            var userList = context.User.ToList();
+
+            foreach (var user in userList)
+            {
+                if (user.Email == email)
+                {
+                    return RedirectToAction("LoginRecoverySuccess", user);
+                }
+            }
+            return View();
+        }
+
+        public ActionResult LoginRecoverySuccess(LoginViewModel model)
+        {
+            return View();
+        }
+
+        public ActionResult LoginRecoveryReset()
+        {
+            return View();
+        }
+   
+
 
         public IActionResult CreateAccount()
         {
