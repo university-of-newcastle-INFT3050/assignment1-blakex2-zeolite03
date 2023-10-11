@@ -26,9 +26,10 @@ table, th, td {
         <div class="row">
             <div class="column" style="float: left;  width: 90%;"><p></p></div>
             <div class="column" style="float: left;  width: 10%;">
-            <form method="post" class="searchForm">
-                <input type="text" name="searchString" />
-                <input type="submit" value="Search" />
+          
+            <form asp-controller="Home" asp-action="Search">
+                <input type="text" name="searchTerm" placeholder="Search by name ">
+                <button type="submit">Search</button>
             </form>
             </div>
         </div>
@@ -45,9 +46,9 @@ table, th, td {
             </tr>
              @foreach(Product product in Model)
             {
-            if (product.GenreLink.Name == "Movies" )
+            if( product.GenreLink != null && product.GenreLink.Name == "Movies")
                {
-                   //if(product.Name == )
+                   
                 <tr>
                     <td>@product.Name</td>
                     <td>@product.GenreLink.Name</td>
@@ -73,7 +74,7 @@ table, th, td {
         </tr>
         @foreach (Product product in Model)
         {
-            if (product.GenreLink.Name == "Games")
+            if (product.GenreLink != null && product.GenreLink.Name == "Games")
             {
                 <tr>
                     <td>@product.Name</td>
@@ -98,7 +99,7 @@ table, th, td {
         </tr>
         @foreach (Product product in Model)
         {
-            if (product.GenreLink.Name == "Books")
+            if (product.GenreLink != null && product.GenreLink.Name == "Books")
             {
                 <tr>
                     <td>@product.Name</td>

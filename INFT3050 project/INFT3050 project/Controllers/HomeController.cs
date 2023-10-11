@@ -10,7 +10,7 @@ namespace INFT3050_project.Controllers
 {
     public class HomeController : Controller
     {
-        
+
 
 
         private ShopContext context;
@@ -48,7 +48,7 @@ namespace INFT3050_project.Controllers
         {
             var genres = context.Genre.ToList();
             var products = context.Product.ToList();
-            
+
             return View(products);
         }
 
@@ -56,14 +56,14 @@ namespace INFT3050_project.Controllers
         {
             var searchString = Request.Form["searchString"];
             var products = await context.Product.Where(x => x.Name.Contains(searchString)).ToListAsync();
-            
+
 
         }
         public IActionResult Test()
         {
             return View();
         }
-  
+
 
         public IActionResult EditorView()
         {
@@ -77,5 +77,22 @@ namespace INFT3050_project.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [HttpPost]
+        public IActionResult Search(string searchTerm)
+        {
+            var query = context.Product.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                query = query.Where(p => p.Name.Contains(searchTerm));
+            }
+            var filteredProducts = query.ToList();
+
+            return View("HomePage", filteredProducts);
+        }
+        
+    
+
     }
 }
