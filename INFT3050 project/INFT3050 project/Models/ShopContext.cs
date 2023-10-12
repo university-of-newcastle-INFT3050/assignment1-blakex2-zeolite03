@@ -8,7 +8,10 @@ namespace INFT3050_project.Models
     {
         public ShopContext(DbContextOptions<ShopContext> options)
            : base(options)
-        { }
+        {
+            ChangeTracker.LazyLoadingEnabled = false;
+            ChangeTracker.AutoDetectChangesEnabled = false;
+        }
 
         public DbSet<Product.Product> Product { get; set; } = null!;
         public DbSet<Genre> Genre { get; set; } = null!;
@@ -19,9 +22,10 @@ namespace INFT3050_project.Models
         public DbSet<Game_Genre> Game_Genres { get; set; } = null!;
         public DbSet<Movie_Genre> Movie_Genres { get; set; } = null!;
         public DbSet<INFT3050_project.Models.User>? User { get; set; }
+        public DbSet<INFT3050_project.Models.Patrons> Patrons { get; set; } 
 
-        
-    
+
+
 
     }
 }

@@ -63,7 +63,7 @@ namespace INFT3050_project.Controllers
         // GET: LoginController/Edit/5
         public ActionResult Edit(int id)
         {
-            User user = context.User.Find(id);
+            Patrons patron = context.Patrons.Find(id);
             return View();
         }
 
@@ -118,7 +118,7 @@ namespace INFT3050_project.Controllers
             if (ModelState.IsValid)
             {
 
-                if (IsValidUser(model.UserName, model.HashPW))
+                if (IsValidUser(model.Email, model.HashPW))
                 {
                     // Successful login
                     // Redirect to a protected area or perform other actions
@@ -136,19 +136,19 @@ namespace INFT3050_project.Controllers
             return View(model);
         }
 
-        private bool IsValidUser(string username, string password)
+        private bool IsValidUser(string email, string password)
         {
             bool IsValid;
             //this will search through all entities in User and return the user only if it matches the Username else it returns null
-            var user = context.User.SingleOrDefault(u => u.UserName == username);
-            if (user != null)
+            var patron = context.Patrons.SingleOrDefault(u => u.Email == email);
+            if (patron != null)
             {
 
 
                 // Combine the stored salt with the entered password
-                string saltedPassword = password + user.Salt;
+                string saltedPassword = password + patron.Salt;
 
-                string HashDB = user.HashPW;
+                string HashDB = patron.HashPW;
                 // hashes the password sent by the user then checks it the same
                 bool isPasswordCorrect = BCrypt.Net.BCrypt.Verify(password, HashDB);
                 if (isPasswordCorrect)
@@ -215,15 +215,16 @@ namespace INFT3050_project.Controllers
                 string salt = BCrypt.Net.BCrypt.GenerateSalt();
                 string saltedPassword = model.HashPW + salt;
                 string HashedPassword = BCrypt.Net.BCrypt.HashPassword(saltedPassword);
-                var newUser = new User
+                var NewPatron = new Patrons
                 {
-                    UserName = model.UserName,
+                   
                     HashPW = HashedPassword,
                     Email = model.Email,
                     Name = model.Name,
+                    Salt = salt
                     
                 };
-                context.User.Add(newUser); 
+                context.Patrons.Add(NewPatron); 
                 context.SaveChanges();
                 return RedirectToAction("HomePage", "Home");
             }

@@ -44,12 +44,19 @@ namespace INFT3050_project.Controllers
             return View();
         }
 
-        public IActionResult HomePage()
+        public IActionResult HomePage(string search)
         {
-            var genres = context.Genre.ToList();
-            var products = context.Product.ToList();
+            var products = context.Product.Include("GenreLink").Where(x => true);
+            //var a = products.ToList();
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                products = products.Where(x => x.Name.Contains(search));
+            }
+            var b = products.ToList();
+            //Ordering logic .OrderBy(x => x)
+            //var genres = context.Genre.ToList();
 
-            return View(products);
+            return View(b);
         }
 
         public async Task OnPostAsync()
@@ -78,9 +85,11 @@ namespace INFT3050_project.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        [HttpPost]
+        [HttpGet]
         public IActionResult Search(string searchTerm)
         {
+            Console.WriteLine($"Search Term: {searchTerm}");
+
             var query = context.Product.AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(searchTerm))

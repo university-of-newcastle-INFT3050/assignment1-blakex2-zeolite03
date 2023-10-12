@@ -27,8 +27,8 @@ table, th, td {
             <div class="column" style="float: left;  width: 90%;"><p></p></div>
             <div class="column" style="float: left;  width: 10%;">
           
-            <form asp-controller="Home" asp-action="Search">
-                <input type="text" name="searchTerm" placeholder="Search by name ">
+            <form asp-controller="Home" asp-action="HomePage" method="get">
+                <input type="text" name="search" placeholder="Search by name ">
                 <button type="submit">Search</button>
             </form>
             </div>
