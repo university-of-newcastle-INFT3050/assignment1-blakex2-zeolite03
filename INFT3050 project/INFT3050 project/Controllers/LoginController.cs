@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
 using BCrypt.Net;
 using System.Text;
+using NuGet.Packaging.Signing;
 
 namespace INFT3050_project.Controllers
 {
@@ -169,22 +170,36 @@ namespace INFT3050_project.Controllers
             return IsValid;
         }
 
-        public IActionResult LoginRecovery()
+        //public IActionResult LoginRecovery()
+        //{
+        //    return View();
+        //}
+
+        public IActionResult LoginRecovery(string email)
         {
+            if (!string.IsNullOrEmpty(email))
+            {
+                var userList = context.User.ToList();
+
+                foreach (var user in userList)
+                {
+                    if (user.Email.Equals(email))
+                    {
+                        return RedirectToAction("LoginRecoverySuccess", user);
+                    }
+                }
+            }
+            
             return View();
         }
 
-        public ActionResult LoginRecovery(string email)
-        {
-            var userList = context.User.ToList();
+        //public IActionResult LoginRecovery(bool mail_Verify)
+        //{
+        //    return RedirectToAction("RecoveryFailed");
+        //}
 
-            foreach (var user in userList)
-            {
-                if (user.Email == email)
-                {
-                    return RedirectToAction("LoginRecoverySuccess", user);
-                }
-            }
+        public IActionResult RecoveryFailed()
+        {
             return View();
         }
 
