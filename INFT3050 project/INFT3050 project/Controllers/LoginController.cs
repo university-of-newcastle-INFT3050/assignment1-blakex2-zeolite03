@@ -180,6 +180,7 @@ namespace INFT3050_project.Controllers
             if (!string.IsNullOrEmpty(email))
             {
                 var userList = context.User.ToList();
+                var patronList = context.Patrons.ToList();
 
                 foreach (var user in userList)
                 {
@@ -188,18 +189,15 @@ namespace INFT3050_project.Controllers
                         return RedirectToAction("LoginRecoverySuccess", user);
                     }
                 }
+                foreach (var patron in patronList)
+                {
+                    if (patron.Email.Equals(email))
+                    {
+                        return RedirectToAction("LoginRecoverySuccess", patron);
+                    }
+                }
             }
             
-            return View();
-        }
-
-        //public IActionResult LoginRecovery(bool mail_Verify)
-        //{
-        //    return RedirectToAction("RecoveryFailed");
-        //}
-
-        public IActionResult RecoveryFailed()
-        {
             return View();
         }
 
