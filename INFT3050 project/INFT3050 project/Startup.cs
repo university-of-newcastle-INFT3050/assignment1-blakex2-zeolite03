@@ -11,9 +11,11 @@ namespace INFT3050_project
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            
         }
 
         public IConfiguration Configuration { get; }
+
 
         // Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -27,6 +29,11 @@ namespace INFT3050_project
 
             services.AddDbContext<ShopContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("ShopContext")));
+            services.AddDistributedMemoryCache(); // Adds an in-memory cache
+            services.AddSession(options =>
+            {
+                options.Cookie.HttpOnly = true;
+            });
         }
 
         // Use this method to configure the HTTP request pipeline.
@@ -37,6 +44,7 @@ namespace INFT3050_project
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

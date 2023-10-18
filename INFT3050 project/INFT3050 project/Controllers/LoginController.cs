@@ -116,8 +116,8 @@ namespace INFT3050_project.Controllers
         public ActionResult LoginPage(LoginViewModel model)
         {
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
 
                 if (IsValidUser(model.Email, model.HashPW))
                 {
@@ -130,7 +130,7 @@ namespace INFT3050_project.Controllers
                     // Invalid credentials, add a model error
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                 }
-            }
+            //}
 
             // If we reach here, the ModelState is not valid, so redisplay the login form
             ModelState.AddModelError(string.Empty, "Invalid login attempt.");
@@ -228,8 +228,8 @@ namespace INFT3050_project.Controllers
             if (ModelState.IsValid)
             {
                 string salt = BCrypt.Net.BCrypt.GenerateSalt();
-                string saltedPassword = model.HashPW + salt;
-                string HashedPassword = BCrypt.Net.BCrypt.HashPassword(saltedPassword);
+                //string saltedPassword = model.HashPW + salt;
+                string HashedPassword = BCrypt.Net.BCrypt.HashPassword(model.HashPW, salt);
                 var NewPatron = new Patrons
                 {
                    
