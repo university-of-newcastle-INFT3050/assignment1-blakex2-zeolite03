@@ -170,31 +170,33 @@ namespace INFT3050_project.Controllers
             return IsValid;
         }
 
-        public IActionResult LoginRecovery()
-        {
-            return View();
-        }
+        //public IActionResult LoginRecovery()
+        //{
+        //    return View();
+        //}
 
         public IActionResult LoginRecovery(string email)
         {
-            bool mail_verify = false;
-            var userList = context.User.ToList();
-
-            foreach (var user in userList)
+            if (!string.IsNullOrEmpty(email))
             {
-                if (user.Email == email)
+                var userList = context.User.ToList();
+
+                foreach (var user in userList)
                 {
-                    mail_verify = true;
-                    return RedirectToAction("LoginRecoverySuccess", user);
+                    if (user.Email.Equals(email))
+                    {
+                        return RedirectToAction("LoginRecoverySuccess", user);
+                    }
                 }
             }
-            return View(mail_verify);
+            
+            return View();
         }
 
-        public IActionResult LoginRecovery(bool mail_Verify)
-        {
-            return RedirectToAction("RecoveryFailed");
-        }
+        //public IActionResult LoginRecovery(bool mail_Verify)
+        //{
+        //    return RedirectToAction("RecoveryFailed");
+        //}
 
         public IActionResult RecoveryFailed()
         {
