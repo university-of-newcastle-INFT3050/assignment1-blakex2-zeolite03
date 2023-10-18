@@ -21,7 +21,7 @@ namespace INFT3050_project.Models
         public DbSet<Book_Genre> Book_Genres { get; set; } = null!;
         public DbSet<Game_Genre> Game_Genres { get; set; } = null!;
         public DbSet<Movie_Genre> Movie_Genres { get; set; } = null!;
-        public DbSet<INFT3050_project.Models.User>? User { get; set; }
+        public DbSet<User> User { get; set; }
         public DbSet<INFT3050_project.Models.Patrons> Patrons { get; set; } 
 
 
