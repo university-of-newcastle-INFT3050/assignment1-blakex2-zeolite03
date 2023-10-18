@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using INFT3050_project.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
 namespace INFT3050_project.ViewModels
@@ -6,7 +7,8 @@ namespace INFT3050_project.ViewModels
     public class LoginViewModel
     {
 
-
+        public User User { get; set; }
+        public Patrons Patrons { get; set; }
         [Required]
         public string UserName { get; set; }
         [Required]

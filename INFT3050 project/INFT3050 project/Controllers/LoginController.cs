@@ -182,13 +182,13 @@ namespace INFT3050_project.Controllers
                 var userList = context.User.ToList();
                 var patronList = context.Patrons.ToList();
 
-                foreach (var user in userList)
-                {
-                    if (user.Email.Equals(email))
-                    {
-                        return RedirectToAction("LoginRecoverySuccess", user);
-                    }
-                }
+                //foreach (var user in userList)
+                //{
+                //    if (user.Email.Equals(email))
+                //    {
+                //        return RedirectToAction("LoginRecoverySuccess", user);
+                //    }
+                //}
                 foreach (var patron in patronList)
                 {
                     if (patron.Email.Equals(email))
@@ -201,9 +201,9 @@ namespace INFT3050_project.Controllers
             return View();
         }
 
-        public ActionResult LoginRecoverySuccess(LoginViewModel model)
+        public ActionResult LoginRecoverySuccess(LoginViewModel Model)
         {
-            return View();
+            return View(Model);
         }
 
         public ActionResult LoginRecoveryReset()
