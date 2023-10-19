@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 //created by Eveleigh 6/08/2023 WIP
 namespace INFT3050_project.Models
 {
@@ -12,9 +13,10 @@ namespace INFT3050_project.Models
         [MaxLength(50)]
         public string UserName { get; set; }
 
-        [Required(ErrorMessage = "Please enter a Email.")]
-        [MaxLength(255)]
-        public string Email { get; set; }
+        //[Required(ErrorMessage = "Please enter a Email.")]
+        //[MaxLength(255)]
+        [AllowNull]
+        public string? Email { get; set; } = "";
 
 
         // ask Connor how to possibly add the salt and hash to this user and other models
