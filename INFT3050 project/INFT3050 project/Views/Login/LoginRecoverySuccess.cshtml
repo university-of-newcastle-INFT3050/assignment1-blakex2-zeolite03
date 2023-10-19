@@ -1,19 +1,7 @@
-﻿@using INFT3050_project.ViewModels
-@using INFT3050_project.Models
-@model LoginViewModel
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
 
-
-<h2>Login Recovery Success</h2>
-<p>for the purposes of this project, it is beyond the scope to send an email. this page instead, acts as an example of what the email would display to the user, with the link being able to reset your password</p>
-
-<div>
-    <strong>Email:</strong> <p>@Model.Email</p>
-</div>
-
-<div>
-    <strong>Username:</strong> <p>@Model.UserName</p>
-</div>
-
-<div>
-    @Html.ActionLink("Reset Password", "LoginRecoveryReset", new { @class = "btn btn-primary" })
-</div>
+<h1> your password has been reset successfully</h1>

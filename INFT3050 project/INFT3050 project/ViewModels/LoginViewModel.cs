@@ -7,9 +7,7 @@ namespace INFT3050_project.ViewModels
     public class LoginViewModel
     {
 
-        public User User { get; set; }
-        public Patrons Patrons { get; set; }
-        [Required]
+        
         public string UserName { get; set; }
         [Required]
         public string HashPW { get; set; }

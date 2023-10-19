@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using BCrypt.Net;
 using System.Text;
 using NuGet.Packaging.Signing;
+//using AspNetCore;
 
 namespace INFT3050_project.Controllers
 {
@@ -193,7 +194,7 @@ namespace INFT3050_project.Controllers
                 {
                     if (patron.Email.Equals(email))
                     {
-                        return RedirectToAction("LoginRecoverySuccess", patron);
+                        return RedirectToAction("LoginRecoveryEmail", patron);
                     }
                 }
             }
@@ -201,16 +202,40 @@ namespace INFT3050_project.Controllers
             return View();
         }
 
-        public ActionResult LoginRecoverySuccess(LoginViewModel Model)
+        public ActionResult LoginRecoveryEmail(LoginViewModel Model)
         {
             return View(Model);
         }
-
-        public ActionResult LoginRecoveryReset()
+        
+        public ActionResult LoginRecoveryReset(LoginViewModel Model, String Password)
         {
-            return View();
+
+            if (!string.IsNullOrEmpty(Password))
+            {
+                Model.HashPW= Password;
+                string salt = BCrypt.Net.BCrypt.GenerateSalt();
+                //string saltedPassword = model.HashPW + salt;
+                string HashedPassword = BCrypt.Net.BCrypt.HashPassword(Model.HashPW, salt);
+                var NewPatron = new Patrons
+                {
+
+                    HashPW = HashedPassword,
+                    Email = Model.Email,
+                    Name = Model.Name,
+                    Salt = salt
+
+                };
+                context.Patrons.Update(NewPatron);
+                context.SaveChanges();
+                return RedirectToAction("LoginRecoverySuccess", "Login");
+
+                
+            }
+            return View(Model);
         }
    
+        public IActionResult LoginRecoverySuccess()
+        { return View(); }
 
 
         public IActionResult CreateAccount()
@@ -222,6 +247,7 @@ namespace INFT3050_project.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Register(LoginViewModel model)
+            //added check to see if user already exists
         {
             if (ModelState.IsValid)
             {
