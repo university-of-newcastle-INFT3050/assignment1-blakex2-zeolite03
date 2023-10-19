@@ -156,6 +156,7 @@ namespace INFT3050_project.Controllers
                 if (isPasswordCorrect)
                 {
                     IsValid = true;
+                    //HttpContext.Session.SetInt32("PatronId", patron.UserId);
                 }
                 else
                 {

@@ -10,16 +10,39 @@ namespace INFT3050_project.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ISession _session;
 
 
 
         private ShopContext context;
 
+       
         public HomeController(ShopContext ctx)
         {
             context = ctx;
+            
         }
 
+        //public IActionResult PatronDashboard()
+        //{
+        //    var patronId = HttpContext.Session.GetInt32("PatronId");
+
+        //    if (patronId.HasValue)
+        //    {
+        //        var patron = GetPatronFromDatabase(patronId.Value);
+        //        return View("PatronDashboard", patron); // Return the PatronDashboard view
+        //    }
+        //    else
+        //    {
+        //        return RedirectToAction("Login");
+        //    }
+        //}
+        //public Patrons GetPatronFromDatabase(int patronId)
+        //{
+        //    // Assuming you have a DbSet for Patrons in your ShopContext
+        //    Patrons patron = context.Patrons.FirstOrDefault(p => p.UserId == patronId);
+        //    return patron;
+        //}
         public IActionResult Index()
         {
             var genres = context.Genre.ToList();

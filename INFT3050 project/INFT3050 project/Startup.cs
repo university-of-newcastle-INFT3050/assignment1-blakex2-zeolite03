@@ -29,9 +29,10 @@ namespace INFT3050_project
 
             services.AddDbContext<ShopContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("ShopContext")));
-            services.AddDistributedMemoryCache(); // Adds an in-memory cache
+            services.AddDistributedMemoryCache(); // Add an in-memory cache
             services.AddSession(options =>
             {
+                options.IdleTimeout = TimeSpan.FromMinutes(20); // Set the session timeout
                 options.Cookie.HttpOnly = true;
             });
         }
