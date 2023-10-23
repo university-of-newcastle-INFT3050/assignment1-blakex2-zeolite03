@@ -9,109 +9,109 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = INFT3050_project
 build_property.RootNamespace = INFT3050_project
-build_property.ProjectDir = C:\YEAR3\INFT3050\start-up-scrum-and-gitcommit-structure-zeolite03\INFT3050 project\INFT3050 project\
+build_property.ProjectDir = C:\Users\blake\OneDrive\Documents\GitHub\assignment1-blakex2-zeolite03\INFT3050 project\INFT3050 project\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\YEAR3\INFT3050\start-up-scrum-and-gitcommit-structure-zeolite03\INFT3050 project\INFT3050 project
+build_property.MSBuildProjectDirectory = C:\Users\blake\OneDrive\Documents\GitHub\assignment1-blakex2-zeolite03\INFT3050 project\INFT3050 project
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/YEAR3/INFT3050/start-up-scrum-and-gitcommit-structure-zeolite03/INFT3050 project/INFT3050 project/Views/Cart/CartDetails.cshtml]
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Cart/CartDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxDYXJ0RGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/YEAR3/INFT3050/start-up-scrum-and-gitcommit-structure-zeolite03/INFT3050 project/INFT3050 project/Views/Home/Details.cshtml]
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Home/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/YEAR3/INFT3050/start-up-scrum-and-gitcommit-structure-zeolite03/INFT3050 project/INFT3050 project/Views/Home/HomePage.cshtml]
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Home/HomePage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIb21lUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/YEAR3/INFT3050/start-up-scrum-and-gitcommit-structure-zeolite03/INFT3050 project/INFT3050 project/Views/Home/Index.cshtml]
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/YEAR3/INFT3050/start-up-scrum-and-gitcommit-structure-zeolite03/INFT3050 project/INFT3050 project/Views/Home/Login.cshtml]
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Home/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/YEAR3/INFT3050/start-up-scrum-and-gitcommit-structure-zeolite03/INFT3050 project/INFT3050 project/Views/Home/Privacy.cshtml]
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/YEAR3/INFT3050/start-up-scrum-and-gitcommit-structure-zeolite03/INFT3050 project/INFT3050 project/Views/Home/ProductEdit.cshtml]
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Home/ProductEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9kdWN0RWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/YEAR3/INFT3050/start-up-scrum-and-gitcommit-structure-zeolite03/INFT3050 project/INFT3050 project/Views/Home/TEMPShowUsers.cshtml]
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Home/TEMPShowUsers.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxURU1QU2hvd1VzZXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/YEAR3/INFT3050/start-up-scrum-and-gitcommit-structure-zeolite03/INFT3050 project/INFT3050 project/Views/Login/CreateAccountPage.cshtml]
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Login/CreateAccountPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cQ3JlYXRlQWNjb3VudFBhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/YEAR3/INFT3050/start-up-scrum-and-gitcommit-structure-zeolite03/INFT3050 project/INFT3050 project/Views/Login/LoginPage.cshtml]
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Login/LoginPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW5QYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/YEAR3/INFT3050/start-up-scrum-and-gitcommit-structure-zeolite03/INFT3050 project/INFT3050 project/Views/Login/LoginRecovery.cshtml]
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Login/LoginRecovery.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW5SZWNvdmVyeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/YEAR3/INFT3050/start-up-scrum-and-gitcommit-structure-zeolite03/INFT3050 project/INFT3050 project/Views/Login/LoginRecoveryEmail.cshtml]
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Login/LoginRecoveryEmail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW5SZWNvdmVyeUVtYWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/YEAR3/INFT3050/start-up-scrum-and-gitcommit-structure-zeolite03/INFT3050 project/INFT3050 project/Views/Login/LoginRecoveryReset.cshtml]
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Login/LoginRecoveryReset.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW5SZWNvdmVyeVJlc2V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/YEAR3/INFT3050/start-up-scrum-and-gitcommit-structure-zeolite03/INFT3050 project/INFT3050 project/Views/Login/LoginRecoverySuccess.cshtml]
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Login/LoginRecoverySuccess.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW5SZWNvdmVyeVN1Y2Nlc3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/YEAR3/INFT3050/start-up-scrum-and-gitcommit-structure-zeolite03/INFT3050 project/INFT3050 project/Views/Product/Edit.cshtml]
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Product/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/YEAR3/INFT3050/start-up-scrum-and-gitcommit-structure-zeolite03/INFT3050 project/INFT3050 project/Views/Product/EditorView.cshtml]
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Product/EditorView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxFZGl0b3JWaWV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/YEAR3/INFT3050/start-up-scrum-and-gitcommit-structure-zeolite03/INFT3050 project/INFT3050 project/Views/Product/Index.cshtml]
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Product/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/YEAR3/INFT3050/start-up-scrum-and-gitcommit-structure-zeolite03/INFT3050 project/INFT3050 project/Views/Shared/Error.cshtml]
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/YEAR3/INFT3050/start-up-scrum-and-gitcommit-structure-zeolite03/INFT3050 project/INFT3050 project/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/YEAR3/INFT3050/start-up-scrum-and-gitcommit-structure-zeolite03/INFT3050 project/INFT3050 project/Views/TestRoute/Test.cshtml]
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/TestRoute/Test.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFJvdXRlXFRlc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/YEAR3/INFT3050/start-up-scrum-and-gitcommit-structure-zeolite03/INFT3050 project/INFT3050 project/Views/User/AccountEdit.cshtml]
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/User/AccountEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxBY2NvdW50RWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/YEAR3/INFT3050/start-up-scrum-and-gitcommit-structure-zeolite03/INFT3050 project/INFT3050 project/Views/User/OrderHistory.cshtml]
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/User/OrderHistory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxPcmRlckhpc3RvcnkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/YEAR3/INFT3050/start-up-scrum-and-gitcommit-structure-zeolite03/INFT3050 project/INFT3050 project/Views/_ViewImports.cshtml]
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/YEAR3/INFT3050/start-up-scrum-and-gitcommit-structure-zeolite03/INFT3050 project/INFT3050 project/Views/_ViewStart.cshtml]
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/YEAR3/INFT3050/start-up-scrum-and-gitcommit-structure-zeolite03/INFT3050 project/INFT3050 project/Views/Shared/_Layout.cshtml]
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-3thzrsovlm

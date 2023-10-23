@@ -26,15 +26,15 @@ namespace INFT3050_project
             });
 
             services.AddControllersWithViews();
-
-            services.AddDbContext<ShopContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("ShopContext")));
-            services.AddDistributedMemoryCache(); // Add an in-memory cache
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(20); // Set the session timeout
                 options.Cookie.HttpOnly = true;
             });
+            services.AddDbContext<ShopContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("ShopContext")));
+            services.AddDistributedMemoryCache(); // Add an in-memory cache
+           
         }
 
         // Use this method to configure the HTTP request pipeline.
