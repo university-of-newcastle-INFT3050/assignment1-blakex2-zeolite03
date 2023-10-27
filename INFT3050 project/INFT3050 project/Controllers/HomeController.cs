@@ -70,10 +70,10 @@ namespace INFT3050_project.Controllers
 
         public IActionResult HomePage(string search)
         {
-            //if (HttpContext.Session.GetString("UserId") != null)
-            //{
-            //    //var userId = HttpContext.Session.GetString("UserId");
-            //}
+            if (HttpContext.Session.GetString("UserId") != null)
+            {
+                var userId = HttpContext.Session.GetString("UserId");
+            }
             var products = context.Product.Include("GenreLink").Where(x => true);
             //var a = products.ToList();
             if (!string.IsNullOrWhiteSpace(search))
