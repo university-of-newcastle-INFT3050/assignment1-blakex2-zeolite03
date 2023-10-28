@@ -127,6 +127,7 @@ namespace INFT3050_project.Controllers
                 {
                     HttpContext.Session.SetString("UserId", user.UserId.ToString());
                     HttpContext.Session.SetString("Name", user.Name.ToString());
+                    HttpContext.Session.SetString("HashPW", user.HashPW.ToString());
                     return RedirectToAction("HomePage", "Home");
                 }
                 var IsEmployee = context.User.FirstOrDefault(u => u.Email == model.Email);
@@ -135,6 +136,7 @@ namespace INFT3050_project.Controllers
                 {
                     HttpContext.Session.SetString("UserId", IsEmployee.UserId.ToString());
                     HttpContext.Session.SetString("Name", IsEmployee.Name.ToString());
+                    HttpContext.Session.SetString("HashPW", IsEmployee.HashPW.ToString());
                     if (IsEmployee.IsAdmin)
                     {
                         HttpContext.Session.SetString("IsAdmin", IsEmployee.IsAdmin.ToString());
