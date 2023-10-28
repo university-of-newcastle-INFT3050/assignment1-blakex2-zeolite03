@@ -23,6 +23,11 @@ namespace INFT3050_project.Models
         public DbSet<Movie_Genre> Movie_Genres { get; set; } = null!;
         public DbSet<User> User { get; set; }
         public DbSet<INFT3050_project.Models.Patrons> Patrons { get; set; } 
+       protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Stocktake.Stocktake>()
+                .HasKey(s => s.itemid);
+        }
 
 
 

@@ -38,6 +38,9 @@ namespace INFT3050_project.Controllers
                 stocktakeList.Add(stockin);
             }
 
+            // take the list of stocktakelist and pass it to the view
+            return View(stocktakeList);
+
 
 
             if (HttpContext.Session.GetString("UserId") != null)
