@@ -76,7 +76,6 @@ namespace INFT3050_project.Controllers
             return View(model);
         }
 
-
        
 
             // POST: ProductController/Edit/5
