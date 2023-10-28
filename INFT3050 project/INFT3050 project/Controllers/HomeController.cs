@@ -1,7 +1,9 @@
 ﻿using INFT3050_project.Models;
 using INFT3050_project.Models.Managers;
 using INFT3050_project.Models.Product;
+using INFT3050_project.Models.Stocktake;
 using INFT3050_project.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
@@ -83,14 +85,23 @@ namespace INFT3050_project.Controllers
 
             return View(model);
         }
-
         public IActionResult AddToCart(int id) 
         {
-            ProductViewModel model = new ProductViewModel()
+            string productlistString = HttpContext.Session.GetString("productlist");
+            List<string> productlist = new List<string>{};
+
+            // Convert the list to a single comma-separated string
+            productlistString = string.Join(",", productlist);
+
+            if (!string.IsNullOrEmpty(productlistString))
             {
-                stocktakes = context.stocktakes.Find(id),
-                SubGenreViewModel = ShopManager.GetViewModel(context)
-            };
+                productlistString += ","; // Add a comma separator if the string is not empty
+            }
+            productlistString += id.ToString();
+
+            // Store the string in the session
+            HttpContext.Session.SetString("productlist", productlistString);
+
             return View();
         }
 
