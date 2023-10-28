@@ -1,8 +1,7 @@
-﻿
-@using INFT3050_project.ViewModels
+﻿@using INFT3050_project.ViewModels
 @model CartViewModel
 
-<h1>Welcome, @Model.User.Name</h1>
+<h1>Welcome</h1>
 
 <h2>Your Shopping Cart</h2>
 
@@ -11,7 +10,6 @@
         <tr>
             <th>Product</th>
             <th>Price</th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -19,15 +17,11 @@
         {
             <tr>
                 <td>@product.Name</td>
-                
-				<td></td>*
-                <td></td>
-                
+                <td>Model.S</td>
             </tr>
         }
     </tbody>
 </table>
-
 
 @if (Model.Products.Count > 0)
 {

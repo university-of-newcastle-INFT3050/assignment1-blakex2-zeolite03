@@ -6,6 +6,7 @@ using INFT3050_project.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System.Diagnostics;
 using static INFT3050_project.ViewModels.HomePageViewModel;
 
@@ -19,7 +20,7 @@ namespace INFT3050_project.Controllers
 
         private ShopContext context;
 
-       
+        List<Product> productlist = new List<Product> { };
         public HomeController(ShopContext ctx)
         {
             context = ctx;
@@ -85,25 +86,34 @@ namespace INFT3050_project.Controllers
 
             return View(model);
         }
-        public IActionResult AddToCart(int id) 
+        public IActionResult AddToCart(int id)
         {
-            string productlistString = HttpContext.Session.GetString("productlist");
-            List<string> productlist = new List<string>{};
-
-            // Convert the list to a single comma-separated string
-            productlistString = string.Join(",", productlist);
-
-            if (!string.IsNullOrEmpty(productlistString))
+            var user = HttpContext.Session.GetString("UserId");
+            if (user != null)
             {
-                productlistString += ","; // Add a comma separator if the string is not empty
+                var Cart = HttpContext.Session.GetString("Cart");
+                var TransferCart = string.IsNullOrEmpty(Cart) ? new List<Product>() : JsonConvert.DeserializeObject<List<Product>>(Cart);
+                
+                var product = context.Product.FirstOrDefault(u => u.ID == id);
+                TransferCart.Add(product);
+                var newCart = JsonConvert.SerializeObject(TransferCart);
+                HttpContext.Session.SetString("Cart", newCart);
+
+                
+                //HttpContext.Session.Set("CartProducts", productlist);
+                return RedirectToAction("HomePage", "Home");
             }
-            productlistString += id.ToString();
+            else
+            {
+                return RedirectToAction("LoginPage", "Login");
+            }
+            
+        }            
 
-            // Store the string in the session
-            HttpContext.Session.SetString("productlist", productlistString);
 
-            return RedirectToAction("HomePage", "Home");
-        }
+
+
+            
 
         public IActionResult Privacy()
         {

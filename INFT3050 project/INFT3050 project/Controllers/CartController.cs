@@ -1,58 +1,40 @@
-﻿using INFT3050_project.Models;
-using INFT3050_project.Models.Managers;
-using INFT3050_project.Models.Product;
-using INFT3050_project.Models.Stocktake;
-using INFT3050_project.ViewModels;
+﻿using INFT3050_project.Models.Stocktake;
+using INFT3050_project.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;
+using INFT3050_project.Models.Product;
+using INFT3050_project.ViewModels;
+using Newtonsoft.Json;
 
-namespace INFT3050_project.Controllers
+public class CartController : Controller
 {
-    public class CartController : Controller
+    private ShopContext context;
+
+    public CartController(ShopContext ctx)
     {
+        context = ctx;
+    }
 
-        public ShopContext context;
-        public CartController(ShopContext ctx)
+    public IActionResult CartDetails()
+    {
+        string productlistString = HttpContext.Session.GetString("productlist");
+
+        // Split the string into a list of strings
+        var currentCart = HttpContext.Session.GetString("Cart");
+        var cart = string.IsNullOrEmpty(currentCart) ? new List<Product>() : JsonConvert.DeserializeObject<List<Product>>(currentCart);
+        List<Stocktake> stocktakeList = new List<Stocktake>();
+        foreach(Product product in cart)
         {
-            this.context = ctx;
+            int productId = product.ID;
+            Stocktake stockin = context.Stocktake.FirstOrDefault(s => s.ProductId == productId);
+            stocktakeList.Add(stockin);
         }
-
-        public IActionResult Index()
+        var viewModel = new CartViewModel
         {
-            return View();
-        }
-
-        public IActionResult CartDetails()
-        {
-            // Retrieve the comma-separated string from the session
-            string productlistString = HttpContext.Session.GetString("productlist");
-
-            // Split the string into a list of strings
-            List<string> productlistasstring = productlistString.Split(',').ToList();
-
-            List<Stocktake> stocktakeList = new List<Stocktake>();
-
-                foreach (var product in productlistasstring)
-                {
-                    int productId = int.Parse(product);
-                Stocktake stockin = context.Stocktake.FirstOrDefault(s => s.ProductId == productId);
-                stockin.Price = (float)stockin.Price;
-                stocktakeList.Add(stockin);
-                }
-                
-            
-
-      
-            if (HttpContext.Session.GetString("UserId") != null)
-            {
-
-                var viewModel = new HomePageViewModel();
-                viewModel.UserId = HttpContext.Session.GetString("UserId");
+            Stocktakes = stocktakeList,
+            Products = cart
+        }; 
 
 
-            }
-            return View();
-        }
+        return View(viewModel);
     }
 }
