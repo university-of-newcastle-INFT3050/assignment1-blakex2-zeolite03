@@ -32,17 +32,18 @@ namespace INFT3050_project.Controllers
             List<string> productlistasstring = productlistString.Split(',').ToList();
 
             List<Stocktake> stocktakeList = new List<Stocktake>();
-            foreach (var product in productlistasstring) 
-            {
-                Stocktake stockin = context.stocktakes.Find(product);
+
+                foreach (var product in productlistasstring)
+                {
+                    int productId = int.Parse(product);
+                Stocktake stockin = context.Stocktake.FirstOrDefault(s => s.ProductId == productId);
+                stockin.Price = (float)stockin.Price;
                 stocktakeList.Add(stockin);
-            }
+                }
+                
+            
 
-            // take the list of stocktakelist and pass it to the view
-            return View(stocktakeList);
-
-
-
+      
             if (HttpContext.Session.GetString("UserId") != null)
             {
 
