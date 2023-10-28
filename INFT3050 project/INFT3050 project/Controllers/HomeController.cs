@@ -102,7 +102,7 @@ namespace INFT3050_project.Controllers
             // Store the string in the session
             HttpContext.Session.SetString("productlist", productlistString);
 
-            return View();
+            return RedirectToAction("HomePage", "Home");
         }
 
         public IActionResult Privacy()
