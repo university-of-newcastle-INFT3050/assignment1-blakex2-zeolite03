@@ -120,24 +120,40 @@ namespace INFT3050_project.Controllers
             //if (ModelState.IsValid)
             //{
 
-                if (IsValidUser(model.Email, model.HashPW))
-                {
+            if (IsValidUser(model.Email, model.HashPW))
+            {
                 var user = context.Patrons.FirstOrDefault(u => u.Email == model.Email);
-                HttpContext.Session.SetString("UserId",user.UserId.ToString());
-                HttpContext.Session.SetString("Name", user.Name.ToString());
-                // Successful login
-                // Redirect to a protected area or perform other actions
-                return RedirectToAction("HomePage", "Home");
-                }
-                else
+                if (user != null)
                 {
-                    // Invalid credentials, add a model error
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    HttpContext.Session.SetString("UserId", user.UserId.ToString());
+                    HttpContext.Session.SetString("Name", user.Name.ToString());
+                    return RedirectToAction("HomePage", "Home");
                 }
-            //}
+                var IsEmployee = context.User.FirstOrDefault(u => u.Email == model.Email);
 
-            // If we reach here, the ModelState is not valid, so redisplay the login form
-            ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                if (IsEmployee != null)
+                {
+                    HttpContext.Session.SetString("UserId", IsEmployee.UserId.ToString());
+                    HttpContext.Session.SetString("Name", IsEmployee.Name.ToString());
+                    if (IsEmployee.IsAdmin)
+                    {
+                        HttpContext.Session.SetString("IsAdmin", IsEmployee.IsAdmin.ToString());
+                    }
+                    return RedirectToAction("HomePage", "Home");
+
+                }
+
+            }
+            else
+            {
+               
+                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+            }
+                
+                //}
+
+                // If we reach here, the ModelState is not valid, so redisplay the login form
+                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
             return View(model);
         }
 
@@ -146,11 +162,12 @@ namespace INFT3050_project.Controllers
             bool IsValid;
             //this will search through all entities in User and return the user only if it matches the Username else it returns null
             var patron = context.Patrons.SingleOrDefault(u => u.Email == email);
+            var user = context.User.SingleOrDefault(u => u.Email == email);
             if (patron != null)
             {
 
 
-                // Combine the stored salt with the entered password
+                //Combine the stored salt with the entered password
                 string saltedPassword = password + patron.Salt;
 
                 string HashDB = patron.HashPW;
@@ -159,13 +176,30 @@ namespace INFT3050_project.Controllers
                 if (isPasswordCorrect)
                 {
                     IsValid = true;
-                    //HttpContext.Session.SetInt32("PatronId", patron.UserId);
+                   
                 }
                 else
                 {
                     IsValid = false;
                 }
 
+            }
+            else if (user != null)
+            {
+                string saltedPassword = password + user.Salt;
+
+                string HashDB2 = user.HashPW;
+                // hashes the password sent by the user then checks it the same
+                bool isPasswordCorrect = BCrypt.Net.BCrypt.Verify(password, HashDB2);
+                if (isPasswordCorrect)
+                {
+                    IsValid = true;
+                    
+                }
+                else
+                {
+                    IsValid = false;
+                }
             }
             else
             {
@@ -264,7 +298,8 @@ namespace INFT3050_project.Controllers
                     HashPW = HashedPassword,
                     Email = model.Email,
                     Name = model.Name,
-                    Salt = salt
+                    Salt = salt,
+                    
                     
                 };
                 context.Patrons.Add(NewPatron); 

@@ -95,8 +95,18 @@ namespace INFT3050_project.Controllers
             if (HttpContext.Session.GetString("UserId") != null)
             {
                 viewModel.UserId = HttpContext.Session.GetString("UserId");
+
                 var patron = context.Patrons.FirstOrDefault(u => u.UserId.ToString() == viewModel.UserId);
-                viewModel.Name = patron.Name;
+                if (patron != null)
+                {
+                    viewModel.Name = patron.Name;
+                }
+                var user = context.User.FirstOrDefault(u => u.UserId.ToString() == viewModel.UserId);
+                if(user != null)
+                {
+                    viewModel.Name = user.Name;
+                }
+
             }
             viewModel.Products = context.Product.Include("GenreLink").ToList();
             //var a = products.ToList();
