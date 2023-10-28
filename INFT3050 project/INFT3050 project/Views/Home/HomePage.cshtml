@@ -1,7 +1,7 @@
 ﻿<!--SO this is the product page created by blake eveleigh this is where i have been formatting and creating tables while figuring out how to get data into 
     a view from a controller. this page is also currently figuring out how to sort that data now using a search bar.
 -->
-@model IEnumerable<Product>
+@model INFT3050_project.ViewModels.HomePageViewModel
 @{
     ViewData["Title"] = "HomePage";
 }
@@ -31,8 +31,13 @@ table, th, td {
                 <input type="text" name="search" placeholder="Search by name ">
                 <button type="submit">Search</button>
             </form>
+           
             </div>
+       
         </div>
+    <div>
+        User ID: @Model.Name
+    </div>
 
         
         <h1> Products</h1>
@@ -44,17 +49,17 @@ table, th, td {
                 <th> Author</th>
                 <th>Description</th>
             </tr>
-             @foreach(Product product in Model)
+             @foreach(Product products in Model.Products)
             {
-            if( product.GenreLink != null && product.GenreLink.Name == "Movies")
+            if( products.GenreLink != null && products.GenreLink.Name == "Movies")
                {
                    
                 <tr>
-                    <td>@product.Name</td>
-                    <td>@product.GenreLink.Name</td>
-                    <td>@product.Author</td>
-                    <td style="border-radius: 50px;">@product.Description</td>
-                    <td><a asp-controller="Home" asp-action="Details" title="Details" asp-route-id="@product.ID">Details</a>
+                    <td>@products.Name</td>
+                    <td>@products.GenreLink.Name</td>
+                    <td>@products.Author</td>
+                    <td style="border-radius: 50px;">@products.Description</td>
+                    <td><a asp-controller="Home" asp-action="Details" title="Details" asp-route-id="@products.ID">Details</a>
                 </tr>
                }
             }
@@ -72,7 +77,7 @@ table, th, td {
             <th> Author</th>
             <th>Description</th>
         </tr>
-        @foreach (Product product in Model)
+        @foreach (Product product in Model.Products)
         {
             if (product.GenreLink != null && product.GenreLink.Name == "Games")
             {
@@ -97,7 +102,7 @@ table, th, td {
             <th> Author</th>
             <th>Description</th>
         </tr>
-        @foreach (Product product in Model)
+        @foreach (Product product in Model.Products)
         {
             if (product.GenreLink != null && product.GenreLink.Name == "Books")
             {

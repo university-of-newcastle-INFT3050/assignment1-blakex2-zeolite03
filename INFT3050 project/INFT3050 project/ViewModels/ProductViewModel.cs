@@ -6,5 +6,6 @@ namespace INFT3050_project.ViewModels
     {
         public Product Product { get; set; }
         public SubGenreViewModel SubGenreViewModel { get; set; }
+       
     }
 }

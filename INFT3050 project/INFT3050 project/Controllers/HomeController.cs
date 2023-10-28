@@ -5,6 +5,7 @@ using INFT3050_project.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using static INFT3050_project.ViewModels.HomePageViewModel;
 
 namespace INFT3050_project.Controllers
 {
@@ -46,10 +47,30 @@ namespace INFT3050_project.Controllers
         public IActionResult Index()
         {
 
-            var genres = context.Genre.ToList();
-            var _products = context.Product.OrderBy(t => t.Name).ToList();
+            //var genres = context.Genre.ToList();
+            //var _products = context.Product.OrderBy(t => t.Name).ToList();
 
-            return View(_products);
+
+            //return View(_products);
+            var viewModel = new HomePageViewModel();
+
+            // Retrieve the user ID from the session (if needed)
+            if (HttpContext.Session.GetString("UserId") != null)
+            {
+                viewModel.UserId = HttpContext.Session.GetString("UserId");
+               
+                
+            }
+
+            viewModel.Products = context.Product
+                .OrderBy(product => product.Name)
+                .ToList();
+
+            viewModel.Genres = context.Genre
+                .ToList();
+
+            return View(viewModel);
+
         }
 
         public IActionResult Details(int id)
@@ -70,21 +91,21 @@ namespace INFT3050_project.Controllers
 
         public IActionResult HomePage(string search)
         {
+            var viewModel = new HomePageViewModel();
             if (HttpContext.Session.GetString("UserId") != null)
             {
-                var userId = HttpContext.Session.GetString("UserId");
+                viewModel.UserId = HttpContext.Session.GetString("UserId");
+                var patron = context.Patrons.FirstOrDefault(u => u.UserId.ToString() == viewModel.UserId);
+                viewModel.Name = patron.Name;
             }
-            var products = context.Product.Include("GenreLink").Where(x => true);
+            viewModel.Products = context.Product.Include("GenreLink").ToList();
             //var a = products.ToList();
             if (!string.IsNullOrWhiteSpace(search))
             {
-                products = products.Where(x => x.Name.Contains(search));
+                viewModel.Products = viewModel.Products.Where(x => x.Name.Contains(search)).ToList();
             }
-            var b = products.ToList();
-            //Ordering logic .OrderBy(x => x)
-            //var genres = context.Genre.ToList();
-
-            return View(b);
+            
+          return View(viewModel);
         }
 
         public async Task OnPostAsync()
@@ -129,7 +150,8 @@ namespace INFT3050_project.Controllers
             return View("HomePage", filteredProducts);
         }
         
-    
+
+
 
     }
 }

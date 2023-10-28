@@ -122,7 +122,9 @@ namespace INFT3050_project.Controllers
 
                 if (IsValidUser(model.Email, model.HashPW))
                 {
-                HttpContext.Session.SetString("UserId", model.UserId.ToString());
+                var user = context.Patrons.FirstOrDefault(u => u.Email == model.Email);
+                HttpContext.Session.SetString("UserId",user.UserId.ToString());
+                HttpContext.Session.SetString("Name", user.Name.ToString());
                 // Successful login
                 // Redirect to a protected area or perform other actions
                 return RedirectToAction("HomePage", "Home");
