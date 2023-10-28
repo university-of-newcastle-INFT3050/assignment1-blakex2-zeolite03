@@ -84,6 +84,16 @@ namespace INFT3050_project.Controllers
             return View(model);
         }
 
+        public IActionResult AddToCart(int id) 
+        {
+            ProductViewModel model = new ProductViewModel()
+            {
+                stocktakes = context.stocktakes.Find(id),
+                SubGenreViewModel = ShopManager.GetViewModel(context)
+            };
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

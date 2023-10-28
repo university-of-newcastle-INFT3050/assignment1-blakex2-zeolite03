@@ -1,6 +1,34 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿
+@using INFT3050_project.ViewModels
+@model CartViewModel
+
+<h1>Welcome, @Model.User.Name</h1>
+
+<h2>Your Shopping Cart</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.Products)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@</td>
+                <td><a asp-page-handler="Remove" asp-route-productId="@product.Id">Remove</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Total: @Model.TotalPrice.ToString("C")</h3>
+
+@if (Model.Products.Count > 0)
+{
+    <button asp-page-handler="Checkout">Checkout</button>
 }
-<h1>this is the shopping cart</h1>

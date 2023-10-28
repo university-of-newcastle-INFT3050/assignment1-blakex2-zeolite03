@@ -1,6 +1,8 @@
 ﻿@using INFT3050_project.ViewModels
+@using INFT3050_project.Models.Stocktake
 @using INFT3050_project.Models.Product.Subgenre
 @model ProductViewModel
+
 
 
 @{
@@ -69,17 +71,9 @@
             <span class="label">Genre:</span> @Model.Product.GenreLink.Name
         </div>
         <div class="info-item">
-            <span class="label">Subgenre:</span> @* @foreach (Genre g in Model.SubGenreViewModel.Genres)
-            {
-                if (g.genreID == Model.Product.genre)
-                {
-                    if (Model.SubGenreViewModel.)
-                }
-                <option value="@g.genreID">@g.Name</option>
-            }
-               
-            }
-            *@
+            <span class="label">Subgenre:</span>  
+    
+  
         </div>
         <div class="info-item">
             <span class="label">Author:</span> @Model.Product.Author
@@ -91,5 +85,10 @@
             <span class="label">Published:</span> @Model.Product.Published
         </div>
     </div>
+    <form asp-controller="Cart" asp-action="AddToCart" method="post">
+        <input type="hidden" name="productId" value="@Model.Product.ID" />
+        <button type="submit">Add to Cart</button>
+    </form>
+    
 </body>
 

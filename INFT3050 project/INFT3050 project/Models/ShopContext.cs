@@ -16,8 +16,8 @@ namespace INFT3050_project.Models
         public DbSet<Product.Product> Product { get; set; } = null!;
         public DbSet<Genre> Genre { get; set; } = null!;
 
-       
-
+        public DbSet<Stocktake.Source> Sources { get; set; } = null!;
+        public DbSet<Stocktake.Stocktake> stocktakes { get; set; } = null!;
         public DbSet<Book_Genre> Book_Genres { get; set; } = null!;
         public DbSet<Game_Genre> Game_Genres { get; set; } = null!;
         public DbSet<Movie_Genre> Movie_Genres { get; set; } = null!;

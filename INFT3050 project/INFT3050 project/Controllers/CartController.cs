@@ -24,6 +24,15 @@ namespace INFT3050_project.Controllers
 
         public IActionResult CartDetails()
         {
+            
+            if (HttpContext.Session.GetString("UserId") != null)
+            {
+
+                var viewModel = new HomePageViewModel();
+                viewModel.UserId = HttpContext.Session.GetString("UserId");
+
+
+            }
             return View();
         }
     }
