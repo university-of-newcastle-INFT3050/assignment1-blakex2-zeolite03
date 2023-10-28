@@ -91,12 +91,13 @@ namespace INFT3050_project.Controllers
             var user = HttpContext.Session.GetString("UserId");
             if (user != null)
             {
-                var Cart = HttpContext.Session.GetString("Cart");
-                var TransferCart = string.IsNullOrEmpty(Cart) ? new List<Product>() : JsonConvert.DeserializeObject<List<Product>>(Cart);
+                var StoreCart = HttpContext.Session.GetString("Cart");
+                //
+                var Cart = string.IsNullOrEmpty(StoreCart) ? new List<Product>() : JsonConvert.DeserializeObject<List<Product>>(StoreCart);
                 
                 var product = context.Product.FirstOrDefault(u => u.ID == id);
-                TransferCart.Add(product);
-                var newCart = JsonConvert.SerializeObject(TransferCart);
+                Cart.Add(product);
+                var newCart = JsonConvert.SerializeObject(Cart);
                 HttpContext.Session.SetString("Cart", newCart);
 
                 
@@ -140,7 +141,7 @@ namespace INFT3050_project.Controllers
 
             }
             viewModel.Products = context.Product.Include("GenreLink").ToList();
-            //var a = products.ToList();
+            
             if (!string.IsNullOrWhiteSpace(search))
             {
                 viewModel.Products = viewModel.Products.Where(x => x.Name.Contains(search)).ToList();

@@ -117,9 +117,7 @@ namespace INFT3050_project.Controllers
         public ActionResult LoginPage(LoginViewModel model)
         {
 
-            //if (ModelState.IsValid)
-            //{
-
+           
             if (IsValidUser(model.Email, model.HashPW))
             {
                 var user = context.Patrons.FirstOrDefault(u => u.Email == model.Email);

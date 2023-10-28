@@ -1,9 +1,8 @@
 ﻿@using INFT3050_project.ViewModels
 @model CartViewModel
 
-<h1>Welcome</h1>
+<h1>Cart</h1>
 
-<h2>Your Shopping Cart</h2>
 
 <table>
     <thead>
@@ -13,17 +12,35 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var product in Model.Products)
-        {
-            <tr>
-                <td>@product.Name</td>
-                <td>Model.S</td>
+        
+        
+           
+             
+            @foreach (var product in Model.Products)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                @foreach (var stocktake in Model.Stocktakes)
+                {
+                
+
+                    <td>Price: $@stocktake.Price</td>
+                
+
+                }
             </tr>
-        }
+            }
+           
+            
+            
+            
+        
     </tbody>
 </table>
 
 @if (Model.Products.Count > 0)
 {
-    <button asp-page-handler="Checkout">Checkout</button>
+    <form asp-controller="Cart" asp-action="Checkout" method="get">
+        <button type="submit"> Checkout</button>
+    </form>
 }

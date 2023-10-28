@@ -13,6 +13,7 @@ namespace INFT3050_project.ViewModels
         [Required]
         public string HashPW { get; set; }
         public int UserId { get; set; }
+        [Required]
         public string Email { get; set; }
         public string Name { get; set; }
         //public string CheckActiveConf(string c) =>

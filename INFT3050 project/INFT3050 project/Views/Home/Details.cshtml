@@ -85,11 +85,8 @@
             <span class="label">Published:</span> @Model.Product.Published
         </div>
     </div>
-    <form asp-controller="Home" asp-action="AddToCart" method="post">
-        <input type="hidden" name="productId" value="@Model.Product.ID" asp-route-id="@Model.Product.ID" />
-        <button type="submit">Add to Cart</button>
-    </form>
-    <a asp-controller="Home" asp-action="AddToCart" title="Details" asp-route-id="@Model.Product.ID">Details</a>
+   
+    <a asp-controller="Home" asp-action="AddToCart" title="Details" asp-route-id="@Model.Product.ID">Add to cart</a>
     
 </body>
 

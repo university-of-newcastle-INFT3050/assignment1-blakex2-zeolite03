@@ -86,6 +86,56 @@ namespace INFT3050_project.Controllers
 
             return View(viewModel);
         }
-    
+
+        [HttpPost]
+        public IActionResult UserAccountEdit(AccountViewModel model)
+        {
+            var viewModel = model;
+            viewModel.UserId = HttpContext.Session.GetString("UserId");
+
+            // Retrieve the patron from the database using the UserId
+            var User = context.User.FirstOrDefault(u => u.UserId.ToString() == viewModel.UserId);
+
+            if (User != null)
+            {
+                //Check the current password
+                if (model.CurrentPassword != null && BCrypt.Net.BCrypt.Verify(model.CurrentPassword, User.HashPW))
+                {
+                    // Update the password to the new password
+                    var newSalt = User.Salt; // Keep the same salt
+                    User.HashPW = BCrypt.Net.BCrypt.HashPassword(model.NewPassword, newSalt);
+                }
+
+                // Update the Email and Name
+                if (!string.IsNullOrEmpty(model.Email))
+                {
+                    User.Email = model.Email;
+                    HttpContext.Session.SetString("Email", User.Email);
+                }
+
+                if (!string.IsNullOrEmpty(model.Name))
+                {
+                    User.Name = model.Name;
+                    HttpContext.Session.SetString("Name", User.Name);
+                }
+
+                try
+                {
+                    context.Update(User); // Save changes to the database
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    // Log or handle the exception as needed
+                    ModelState.AddModelError(string.Empty, "An error occurred while saving changes.");
+                } // Save changes to the database
+            }
+
+            return View(viewModel);
+        }
+
+
+
+
     }
 }
