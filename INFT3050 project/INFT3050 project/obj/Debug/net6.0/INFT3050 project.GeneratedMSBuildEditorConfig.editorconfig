@@ -16,8 +16,16 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\blake\OneDrive\Documents\GitHub\assignment1-blakex2-zeolite03\INFT3050 project\INFT3050 project
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Account/PatronAccount.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxQYXRyb25BY2NvdW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Account/PatronAccountEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxQYXRyb25BY2NvdW50RWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Account/UserAccount.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxVc2VyQWNjb3VudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/blake/OneDrive/Documents/GitHub/assignment1-blakex2-zeolite03/INFT3050 project/INFT3050 project/Views/Account/UserAccountEdit.cshtml]

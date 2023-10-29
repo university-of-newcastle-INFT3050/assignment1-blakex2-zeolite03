@@ -36,10 +36,63 @@ namespace INFT3050_project.Controllers
 
                 return View(viewModel);
             }
+            else 
+            {
+                return View(); 
+            }
+
+
+        }
+
+        public IActionResult UserAccountEdit()
+        {
+            if (HttpContext.Session.GetString("UserId") != null)
+            {
+                var viewModel = new AccountViewModel();
+                viewModel.UserId = HttpContext.Session.GetString("UserId");
+
+                var User = context.User.FirstOrDefault(u => u.UserId.ToString() == viewModel.UserId);
+                if (User != null)
+                {
+                    viewModel.Name = User.Name;
+                    viewModel.Email = User.Email;
+
+
+                }
+
+
+                return View(viewModel);
+            }
             else { return View(); }
 
 
         }
+        public IActionResult PatronAccount()
+        {
+            return View();
+        }
+        public IActionResult UserAccount()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult GoEdit()
+        {
+            return RedirectToAction("PatronAccountEdit");
+        }
+        [HttpGet]
+        public IActionResult UserGoEdit()
+        {
+            return RedirectToAction("UserAccountEdit");
+        }
+        [HttpGet]
+        public IActionResult LogOut()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("HomePage", "Home");
+        }
+
         [HttpPost]
         public IActionResult PatronAccountEdit(AccountViewModel model)
         {
