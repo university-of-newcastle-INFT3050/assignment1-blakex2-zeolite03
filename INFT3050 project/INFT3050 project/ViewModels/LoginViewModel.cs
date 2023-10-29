@@ -6,7 +6,7 @@ namespace INFT3050_project.ViewModels
 {
     public class LoginViewModel
     {
-
+        // getting login info from login page and posting it to validate user.
       
         public string UserName { get; set; }
 

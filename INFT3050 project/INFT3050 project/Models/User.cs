@@ -3,7 +3,8 @@ using System.Diagnostics.CodeAnalysis;
 //created by Eveleigh 6/08/2023 WIP
 namespace INFT3050_project.Models
 {
-    // info on the user
+    // these are the employees of the company
+    // there would be role stuff here if we got to that point.
     public class User
     {
         [Key]
@@ -20,7 +21,7 @@ namespace INFT3050_project.Models
         public string? Email { get; set; } = "";
 
 
-        // ask Connor how to possibly add the salt and hash to this user and other models
+       
 
         //the sql data will populate but we will still need to make a hash function and slat function for the patron model
 
@@ -32,6 +33,7 @@ namespace INFT3050_project.Models
         [MaxLength(255)]
         public string Name { get; set; }
         
+        //if true employee is an admin
         public bool IsAdmin { get; set; }
 
         //32 hexadecimal digits generated at random

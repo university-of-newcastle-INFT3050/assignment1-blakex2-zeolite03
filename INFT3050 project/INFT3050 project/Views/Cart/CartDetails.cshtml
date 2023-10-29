@@ -3,7 +3,7 @@
 <div class="back"></div>
     <h1>Cart</h1>
 
-
+    //
     <table>
         <thead>
             <tr>
@@ -17,15 +17,18 @@
                 {
                     <tr>
                         <td>@product.Name</td>
-                    @foreach (var stocktake in Model.Stocktakes)
-                    {
-                
-
-                        <td>Price: $@stocktake.Price</td>
-                
-
-                    }
+                        so here it will display multipe stocktakes per 
+                       @*  bug here but the problem is how the stocktake is stored so not sure how to fixed will just leave for now *@
+                   
                 </tr>
+                }
+                @foreach (var stocktake in Model.Stocktakes)
+                {
+
+
+                <td>Price: $@stocktake.Price</td>
+
+
                 }
 
         </tbody>

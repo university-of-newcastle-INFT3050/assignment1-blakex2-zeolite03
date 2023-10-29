@@ -4,12 +4,13 @@
 }
 <div class="back">
     <h1>Create Account</h1>
-
+   @*  form to fill out and will create an account *@
 
     <form asp-controller="Login" asp-action="Register" method="post">
    
         <div class="form-group">
             <label for="Email">Email</label>
+       @*    adding required for text validation   https://learn.microsoft.com/en-us/aspnet/core/mvc/views/working-with-forms?view=aspnetcore-7.0 *@
             <input type="text" id="Email" name="Email" class="form-control" required>
         </div>
 

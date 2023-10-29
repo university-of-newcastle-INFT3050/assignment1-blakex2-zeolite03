@@ -10,6 +10,7 @@ using System.Net;
 using static NuGet.Packaging.PackagingConstants;
 
 //the controller for handling all shopping cart actions
+// both eveleigh and Eastwood worked on the cart together.
 public class CartController : Controller
 {
     private ShopContext context;
@@ -29,6 +30,10 @@ public class CartController : Controller
     //shows the details of the cart created by the user/patron
     public IActionResult CartDetails()
     {
+        //other half is in the home controller 
+        //tldr takes the session from home deserialises it so we can get the list of products which we match to the stocktake and send both in a viewmodel to the view,
+
+
         //calls the session to make a string that conatins a list of the products ID's
         string products = HttpContext.Session.GetString("productlist");
 
@@ -63,6 +68,8 @@ public class CartController : Controller
     [HttpPost]
     public IActionResult Checkout(OrderViewModel model)
     {
+        // doesnt really work 
+        //from the model create a new TO and new Order
         //test variables for adding to database
         var user = HttpContext.Session.GetString("UserId");
         int userid = int.Parse(user);
@@ -83,7 +90,7 @@ public class CartController : Controller
         };
         var order = new Orders
         {
-           // customer = to.customerID, // Corrected property name
+           
             StreetAddress = model.address,
             postcode = model.postcode,
             Suburb = model.Suburb,
@@ -103,7 +110,7 @@ public class CartController : Controller
     {
         //calls userid info
         var user = HttpContext.Session.GetString("UserId");
-        //reference this
+        
         //creates a new list to store order
         List<Orders> orders = new List<Orders>();
         //goes through the database to find the patrons order info 

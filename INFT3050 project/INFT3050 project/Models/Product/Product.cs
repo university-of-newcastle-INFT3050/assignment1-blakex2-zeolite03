@@ -8,7 +8,8 @@ namespace INFT3050_project.Models.Product
     //info on the product
     public class Product
     {
-
+        // some text validation 
+        // most text validation is within the view models 
             public int ID { get; set; }
 
             [Required(ErrorMessage = "Please enter a name.")]
@@ -30,7 +31,7 @@ namespace INFT3050_project.Models.Product
             [Required(ErrorMessage = "Please enter a genre.")]
             //public int GenreID { get; set; }
             public DateTime Published { get; set; }
-
+        //commented out because didnt get timte to implement
             //public User LastUpdatedBy { get; set; }
 
             //public DateTime LastUpdated { get; set; }

@@ -5,6 +5,7 @@ namespace INFT3050_project.ViewModels
 {
     public class AddItemViewModel
     {
+        // adding an item
         [Required(ErrorMessage = "Please enter a name")]
         [StringLength(20)]
         public string Name { get; set; }

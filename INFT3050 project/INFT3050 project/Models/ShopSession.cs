@@ -1,6 +1,8 @@
 ﻿namespace INFT3050_project.Models
 {
     //handles session data
+    //This isnt used maybe -Blake Eveleigh
+    //going to keep just in case becuase im worried it will break the code
     public class ShopSession
     {
         private ISession session { get; set; }

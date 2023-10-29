@@ -10,7 +10,7 @@ using BCrypt.Net;
 using System.Text;
 using NuGet.Packaging.Signing;
 //using AspNetCore;
-
+//Eveleigh did the login and create account while Eastwood did the login recovery.
 namespace INFT3050_project.Controllers
 {
     //handles the login process and pages
@@ -116,9 +116,10 @@ namespace INFT3050_project.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LoginPage(LoginViewModel model)
         {
-            //check to ensure the users email and the hashed password matches the hashed password and email on the database
+            //this is sending the email and password and seeing if there is a match to them
             if (IsValidUser(model.Email, model.HashPW))
             {
+                //gets the first matching email then sets the user to the session so logs them in
                 var user = context.Patrons.FirstOrDefault(u => u.Email == model.Email);
                 if (user != null)
                 {
@@ -127,6 +128,7 @@ namespace INFT3050_project.Controllers
                     HttpContext.Session.SetString("HashPW", user.HashPW.ToString());
                     return RedirectToAction("HomePage", "Home");
                 }
+                //does the same thing but if its an employee
                 var IsEmployee = context.User.FirstOrDefault(u => u.Email == model.Email);
 
                 if (IsEmployee != null)
@@ -134,6 +136,7 @@ namespace INFT3050_project.Controllers
                     HttpContext.Session.SetString("UserId", IsEmployee.UserId.ToString());
                     HttpContext.Session.SetString("Name", IsEmployee.Name.ToString());
                     HttpContext.Session.SetString("HashPW", IsEmployee.HashPW.ToString());
+                    //if admin sets the login user as admin.
                     if (IsEmployee.IsAdmin)
                     {
                         HttpContext.Session.SetString("IsAdmin", IsEmployee.IsAdmin.ToString());
@@ -145,24 +148,30 @@ namespace INFT3050_project.Controllers
             }
             else
             {
-               
+                //if it doesnt work show error
+                //this line of code isnt mine https://stackoverflow.com/questions/5739362/modelstate-addmodelerror-how-can-i-add-an-error-that-isnt-for-a-property
+                //is referenced in report
                 ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                
             }
                 
                 //}
-
-                // If we reach here, the ModelState is not valid, so redisplay the login form
+                
                 ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+            //referenced code ends here 
             return View(model);
         }
-        //checks to ensure th user is valid by taking their email and password, hashing the password with the associated salt, then comparing that password
+
+        //checks to ensure the user is valid by taking their email and password, hashing the password with the associated salt, then comparing that password
         //to the databases hashed password
         private bool IsValidUser(string email, string password)
         {
             bool IsValid;
-            //this will search through all entities in User and return the user only if it matches the Username else it returns null
+            //searches all users and gets the first one that matches the email of the model
             var patron = context.Patrons.SingleOrDefault(u => u.Email == email);
+            //same thing for employees
             var user = context.User.SingleOrDefault(u => u.Email == email);
+
             if (patron != null)
             {
 
@@ -186,6 +195,7 @@ namespace INFT3050_project.Controllers
             }
             else if (user != null)
             {
+                //Combine the stored salt with the entered password
                 string saltedPassword = password + user.Salt;
 
                 string HashDB2 = user.HashPW;
@@ -281,15 +291,18 @@ namespace INFT3050_project.Controllers
         public IActionResult Register(LoginViewModel model)
             //added check to see if user already exists
         {
-            //checks the model inputted satisfies the requirements for an account
+            
             if (ModelState.IsValid)
             {
                 //generates a salt unique to the account
+                //this is using code from https://jasonwatmore.com/post/2021/05/27/net-5-hash-and-verify-passwords-with-bcrypt 
                 string salt = BCrypt.Net.BCrypt.GenerateSalt();
                 //string saltedPassword = model.HashPW + salt;
                 //hashes the password based on the salt
                 string HashedPassword = BCrypt.Net.BCrypt.HashPassword(model.HashPW, salt);
-                //creates a new patron with relevant info
+                // code from the BCrypt script ends here
+
+                //creates a new patron
                 var NewPatron = new Patrons
                 {
                    

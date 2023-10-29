@@ -4,7 +4,8 @@ using INFT3050_project.Models.Product;
 using INFT3050_project.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
+//Eastwood did the editing, Eveleigh did the adding and deleting items
 namespace INFT3050_project.Controllers
 {
     //handles the product editing 
@@ -127,17 +128,21 @@ namespace INFT3050_project.Controllers
         [HttpPost]
         public IActionResult Delete(int id)
         {
+            //finding product in the db based on id
             var product = context.Product.Find(id);
+            //also finding the stock take and cant delete product without because  product without deleting the stock that points to it first.
             var stock = context.Stocktake.Where(u=>u.ProductId == id);
             if (stock != null)
             {
                 foreach (var item in stock)
                 {
+                    //removes the stock
                     context.Stocktake.Remove(item);
                     context.SaveChanges();
                 }
 
                 }
+            //removes the product.
             context.Product.Remove(product);
             context.SaveChanges();
 
@@ -148,6 +153,7 @@ namespace INFT3050_project.Controllers
         public IActionResult Add()
 
         {
+            
             return View();
         }
 
@@ -155,6 +161,9 @@ namespace INFT3050_project.Controllers
         [HttpPost]
         public IActionResult AddItem(AddItemViewModel model) 
         {
+            //just takes the infomaion form the view and makes a new product
+            //because it doesnt add a genre it display on the views
+            //if we had more time this is something we would do.
             var NewItem = new Product
             {
                 Name = model.Name,

@@ -7,6 +7,9 @@ namespace INFT3050_project.Models
     //shop context class handles most information needed for the database and the relevant object
     public class ShopContext : DbContext
     {
+        //just adding each model to the database
+        //context of the database
+        //connects to each controller
         public ShopContext(DbContextOptions<ShopContext> options)
            : base(options)
         {

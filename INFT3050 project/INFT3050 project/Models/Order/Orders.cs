@@ -6,6 +6,7 @@ namespace INFT3050_project.Models.Order
 {
     //info for the orders
     public class Orders
+        //order but doesnt really work
     {
         [Key]
         public int OrderId { get; set; }

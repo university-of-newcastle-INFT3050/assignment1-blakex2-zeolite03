@@ -6,6 +6,7 @@ namespace INFT3050_project.Models.Order
     //info for the product in orders
     public class ProductsInOrders
     {
+        // my code in the controller would not work with the proper foreign keys so i commented them out
         [Key]
         public int ProductsInOrdersId { get; set; }
         public int OrderId { get; set; }

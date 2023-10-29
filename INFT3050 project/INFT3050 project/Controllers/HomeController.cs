@@ -18,7 +18,7 @@ namespace INFT3050_project.Controllers
         private readonly ISession _session;
 
 
-        
+        //getting db
         private ShopContext context;
 
         List<Product> productlist = new List<Product> { };
@@ -90,7 +90,10 @@ namespace INFT3050_project.Controllers
         }
         //adds a product to the shopping cart
         public IActionResult AddToCart(int id)
-        {
+        { // tldr for this function is it concats a product to a list then adds it to a session while serializing it as a json
+            //for some reason cant send a list of products through session
+            // so thats why we use json
+
             //takes in the users id from the session
             var user = HttpContext.Session.GetString("UserId");
             //checks if there is a user
@@ -100,6 +103,7 @@ namespace INFT3050_project.Controllers
                 var StoreCart = HttpContext.Session.GetString("Cart");
                 //
                 //creates a list based on the sessions json info
+                // so this is based on the week 6 content learning to serialize json to send it trough a session.
                 var Cart = string.IsNullOrEmpty(StoreCart) ? new List<Product>() : JsonConvert.DeserializeObject<List<Product>>(StoreCart);
                 //gets the current product selected and finds the product object via its id
                 var product = context.Product.FirstOrDefault(u => u.ID == id);
@@ -131,8 +135,10 @@ namespace INFT3050_project.Controllers
             return View();
         }
 
+        //Search function was made with the help of connor during a lab.
         public IActionResult HomePage(string search)
         {
+
             var viewModel = new HomePageViewModel();
             if (HttpContext.Session.GetString("UserId") != null)
             {

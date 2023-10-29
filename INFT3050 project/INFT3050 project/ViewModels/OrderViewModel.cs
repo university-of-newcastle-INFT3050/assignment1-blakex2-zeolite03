@@ -5,6 +5,8 @@ namespace INFT3050_project.ViewModels
 {
     public class OrderViewModel
     {
+        // for the checkout form 
+        // has form validation
 
         [Required(ErrorMessage = "Please Enter an Email Address")]
         [EmailAddress]
