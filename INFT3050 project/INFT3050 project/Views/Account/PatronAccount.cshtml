@@ -3,16 +3,17 @@
 *@
 @{
 }
-<h2>User Account</h2>
-<div>
-    <form asp-controller="Account" asp-action="GoEdit" method="get">
-       <button type="submit"> Edit Account</button>
-    </form>
-</div>
+<div class="back">
+    <h2>Your Account</h2>
+    <div>
+        <form asp-controller="Account" asp-action="GoEdit" method="get">
+           <button type="submit"> Edit Account</button>
+        </form>
+    </div>
 
-<div>
-    <form asp-controller="Account" asp-action="LogOut" method="get">
-        <button type="submit"> LogOut</button>
-    </form>
+    <div>
+        <form asp-controller="Account" asp-action="LogOut" method="get">
+            <button type="submit"> LogOut</button>
+        </form>
+    </div>
 </div>
-}

@@ -7,120 +7,119 @@
 }
 <head>
 <style>
-body {background-color: beige;}
+
 h1   {color: blue;}
-table, th, td {
-  border: 1px solid black;
-  border-radius: 10px;
-  ;
-}
+
 </style>
 </head>
-<h1>HomePage</h1>
+<div class="back">
+    <h1>HomePage</h1>
 
-<h4>Product</h4>
-<hr />
-<div class="row">
+    <h4>Product</h4>
+    <hr />
+    <div>
+
     
         
-        <div class="row">
-            <div class="column" style="float: left;  width: 90%;"><p></p></div>
-            <div class="column" style="float: left;  width: 10%;">
+            <div class="row">
+                <div class="column" style="float: left;  width: 80%;"><p></p></div>
+                <div class="column" style="float: left;  width: 10%;">
           
-            <form asp-controller="Home" asp-action="HomePage" method="get">
-                <input type="text" name="search" placeholder="Search by name ">
-                <button type="submit">Search</button>
-            </form>
+                <form asp-controller="Home" asp-action="HomePage" method="get">
+                    <input type="text" name="search" placeholder="Search by name ">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
            
-            </div>
+                </div>
        
-        </div>
-    <div>
-        User ID: @Model.Name
-    </div>
+            </div>
+    
 
         
-        <h1> Products</h1>
-        <h2><u>Movies</u></h2>
-        <table >
+            <h1> Products</h1>
+            <h2><u>Movies</u></h2>
+            <table >
+                <tr>
+                    <th>Name</th>
+                    <th> Genre</th>
+                    <th> Author</th>
+                    <th>Description</th>
+                </tr>
+                 @foreach(Product products in Model.Products)
+                {
+                if( products.GenreLink != null && products.GenreLink.Name == "Movies")
+                   {
+                   
+                    <tr>
+                        <td>@products.Name</td>
+                        <td>@products.GenreLink.Name</td>
+                        <td>@products.Author</td>
+                        <td style="border-radius: 50px;">@products.Description</td>
+                        <td><a asp-controller="Home" asp-action="Details" title="Details" asp-route-id="@products.ID">Details</a>
+                    </tr>
+                   }
+                }
+            </table>
+    
+    </div>
+
+    <div>
+        <h2 ><u>Games</u></h2>
+
+        <table>
             <tr>
                 <th>Name</th>
                 <th> Genre</th>
                 <th> Author</th>
                 <th>Description</th>
             </tr>
-             @foreach(Product products in Model.Products)
+            @foreach (Product product in Model.Products)
             {
-            if( products.GenreLink != null && products.GenreLink.Name == "Movies")
-               {
-                   
-                <tr>
-                    <td>@products.Name</td>
-                    <td>@products.GenreLink.Name</td>
-                    <td>@products.Author</td>
-                    <td style="border-radius: 50px;">@products.Description</td>
-                    <td><a asp-controller="Home" asp-action="Details" title="Details" asp-route-id="@products.ID">Details</a>
-                </tr>
-               }
+                if (product.GenreLink != null && product.GenreLink.Name == "Games")
+                {
+                    <tr>
+                        <td>@product.Name</td>
+                        <td>@product.GenreLink.Name</td>
+                        <td>@product.Author</td>
+                        <td style="border-radius: 50px;">@product.Description</td>
+                        <td><a asp-controller="Home" asp-action="Details" title="Details" asp-route-id="@product.ID">Details</a>
+                    </tr>
+                }
             }
         </table>
-    
-</div>
+    </div>
 
-<div>
-    <h2 ><u>Games</u></h2>
+    <div>
+        <h2><u>Books</u></h2>
 
-    <table>
-        <tr>
-            <th>Name</th>
-            <th> Genre</th>
-            <th> Author</th>
-            <th>Description</th>
-        </tr>
-        @foreach (Product product in Model.Products)
-        {
-            if (product.GenreLink != null && product.GenreLink.Name == "Games")
+        <table>
+            <tr>
+                <th>Name</th>
+                <th> Genre</th>
+                <th> Author</th>
+                <th>Description</th>
+            </tr>
+            @foreach (Product product in Model.Products)
             {
-                <tr>
-                    <td>@product.Name</td>
-                    <td>@product.GenreLink.Name</td>
-                    <td>@product.Author</td>
-                    <td style="border-radius: 50px;">@product.Description</td>
-                </tr>
+                if (product.GenreLink != null && product.GenreLink.Name == "Books")
+                {
+                    <tr>
+                        <td>@product.Name</td>
+                        <td>@product.GenreLink.Name</td>
+                        <td>@product.Author</td>
+                        <td style="border-radius: 50px;">@product.Description</td>
+                        <td><a asp-controller="Home" asp-action="Details" title="Details" asp-route-id="@product.ID">Details</a>
+                    </tr>
+                }
             }
-        }
-    </table>
-</div>
-
-<div>
-    <h2><u>Books</u></h2>
-
-    <table>
-        <tr>
-            <th>Name</th>
-            <th> Genre</th>
-            <th> Author</th>
-            <th>Description</th>
-        </tr>
-        @foreach (Product product in Model.Products)
-        {
-            if (product.GenreLink != null && product.GenreLink.Name == "Books")
-            {
-                <tr>
-                    <td>@product.Name</td>
-                    <td>@product.GenreLink.Name</td>
-                    <td>@product.Author</td>
-                    <td style="border-radius: 50px;">@product.Description</td>
-                </tr>
-            }
-        }
-    </table>
-</div>
+        </table>
+    </div>
 
 
 
-<div>
-    <a asp-action="Index">Back to List</a>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
 </div>
 
 @section Scripts {

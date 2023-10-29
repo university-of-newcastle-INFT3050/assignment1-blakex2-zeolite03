@@ -29,64 +29,62 @@
 
 </div>
 *@
-<head>
-<title>Product Details</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        margin: 0;
-        padding: 0;
-    }
+<div class="back">
+    <head>
+    
+    <title>Product Details</title>
+    <style>
+   
 
-    .container {
-        max-width: 600px;
-        margin: 20px auto;
-        background-color: #fff;
-        padding: 20px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
 
-    h1 {
-        font-size: 24px;
-        margin-bottom: 10px;
-    }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
 
-    .info-item {
-        margin-bottom: 15px;
-    }
+        .info-item {
+            margin-bottom: 15px;
+        }
 
-    .label {
-        font-weight: bold;
-    }
-</style>
-</head>
-<body>
-    <div class="container">
-        <h1>Product Details</h1>
-        <div class="info-item">
-            <span class="label">Name:</span>  @Model.Product.Name
-        </div>
-        <div class="info-item">
-            <span class="label">Genre:</span> @Model.Product.GenreLink.Name
-        </div>
-        <div class="info-item">
-            <span class="label">Subgenre:</span>  
+        .label {
+            font-weight: bold;
+        }
+    </style>
+    </head>
+    <div class="back">
+        <div class="container">
+            <h1>Product Details</h1>
+            <div class="info-item">
+                <span class="label">Name:</span>  @Model.Product.Name
+            </div>
+            <div class="info-item">
+                <span class="label">Genre:</span> @Model.Product.GenreLink.Name
+            </div>
+            <div class="info-item">
+                <span class="label">Subgenre:</span>  
     
   
+            </div>
+            <div class="info-item">
+                <span class="label">Author:</span> @Model.Product.Author
+            </div>
+            <div class="info-item">
+                <span class="label">Description:</span> @Model.Product.Description
+            </div>
+            <div class="info-item">
+                <span class="label">Published:</span> @Model.Product.Published
+            </div>
         </div>
-        <div class="info-item">
-            <span class="label">Author:</span> @Model.Product.Author
-        </div>
-        <div class="info-item">
-            <span class="label">Description:</span> @Model.Product.Description
-        </div>
-        <div class="info-item">
-            <span class="label">Published:</span> @Model.Product.Published
-        </div>
-    </div>
    
-    <a asp-controller="Home" asp-action="AddToCart" title="Details" asp-route-id="@Model.Product.ID">Add to cart</a>
-    
-</body>
+        <a asp-controller="Home" asp-action="AddToCart" title="Details" asp-route-id="@Model.Product.ID">Add to cart</a>
+
+    </div>
+</div>
 

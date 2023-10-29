@@ -1,12 +1,13 @@
 ﻿@using INFT3050_project.ViewModels
 @using INFT3050_project.Models
 @model LoginViewModel
+<div class="back">
+    <h1>reset password</h1>
 
-<h1>reset password</h1>
 
-
-<form asp-controller="Login" asp-action="LoginRecoveryReset" method="post">
-    <h2>Enter New Password:</h2>
-    <input type="password" id="password" name="password" />
-    <input type="submit" value="Submit" />
-</form>
+    <form asp-controller="Login" asp-action="LoginRecoveryReset" method="post">
+        <h2>Enter New Password:</h2>
+        <input type="password" id="password" name="password" />
+        <input type="submit" value="Submit" />
+    </form>
+</div>

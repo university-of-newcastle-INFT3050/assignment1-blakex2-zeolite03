@@ -3,36 +3,37 @@
 @{
     ViewData["Title"] = "View";
 }
-
-<h1>View</h1>
-
-
-<div>
-    <form asp-controller="Login" asp-action="LoginPage" method="post">
-        <div>
-            <label asp-for="Email"></label>
-            <input asp-for="Email" />
-            <span asp-validation-for="Email"></span>
-        </div>
-        <div>
-            <label asp-for="HashPW">Password</label>
-            <input asp-for="HashPW" type="password" />
-            <span asp-validation-for="HashPW"></span>
-        </div>
-        <div>
-            <button type="submit">Login</button>
-        </div>
-    </form>  
-</div>
+<div class="back">
+    <h1>View</h1>
 
 
+    <div>
+        <form asp-controller="Login" asp-action="LoginPage" method="post">
+            <div>
+                <label asp-for="Email"></label>
+                <input asp-for="Email" />
+                <span asp-validation-for="Email"></span>
+            </div>
+            <div>
+                <label asp-for="HashPW">Password</label>
+                <input asp-for="HashPW" type="password" />
+                <span asp-validation-for="HashPW"></span>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+        </form>  
+    </div>
 
-<div>
-    <a href="@Url.Action("LoginRecovery")" class="btn btn-primary">forgot password</a>
+
+
+    <div>
+        <a href="@Url.Action("LoginRecovery")" class="btn btn-primary">forgot password</a>
     
-    <a href="@Url.Action("CreateAccountPage", "Login")" class="btn btn-primary">create an account</a>
-</div>
+        <a href="@Url.Action("CreateAccountPage", "Login")" class="btn btn-primary">create an account</a>
+    </div>
 
-<div>
+    <div>
    
+    </div>
 </div>

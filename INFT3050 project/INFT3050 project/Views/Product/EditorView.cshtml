@@ -9,9 +9,7 @@
 
 <head>
     <style>
-        body {
-            background-color: aliceblue;
-        }
+     
 
         h1 {
             color: black;
@@ -28,6 +26,7 @@
         }
     </style>
 </head>
+<div class="back">
 <h1>Editor view</h1>
 
 <h4>Product</h4>
@@ -36,11 +35,11 @@
 
 
     <div class="row">
-        <div class="column" style="float: left;  width: 90%;"><p></p></div>
+        <div class="column" style="float: left;  width: 80%;"><p></p></div>
         <div class="column" style="float: left;  width: 10%;">
             <form method="post" class="searchForm">
                 <input type="text" name="searchString" id="myInput" />
-                <input type="submit" value="Search" />
+                    <input type="submit" value="Search" class="btn btn-primary" />
             </form>
         </div>
     </div>
@@ -49,7 +48,7 @@
     <h1> Editor</h1>
     <div>
         <form asp-controller="Product" asp-action="Add" method="get">
-            <button type="submit"> Add new Item</button>
+                <button type="submit" class="btn btn-primary"> Add new Item</button>
         </form>
     </div>
     <h2 style="padding: 20px"><u>Movies</u></h2>
@@ -72,8 +71,9 @@
                    <td><a asp-controller="Product" asp-action="Edit" title="Edit" asp-route-id="@product.ID">Edit</a>
                         <form asp-controller="Product" asp-action="Delete" method="post">
                             <input type="hidden" name="id" value="@product.ID" />
-                            <button type="submit"> Delete</button>
+                                <button type="submit" class="btn btn-primary"> Delete</button>
                         </form>
+                        </td
                 </tr>
             }
         }
@@ -141,6 +141,7 @@
 
 <div>
     <a asp-action="Index">Back to List</a>
+</div>
 </div>
 
 @section Scripts {

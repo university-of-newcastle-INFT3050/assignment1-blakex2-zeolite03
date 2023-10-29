@@ -4,68 +4,70 @@
 *@
 @{
 }
-<h2>Your Shopping Cart</h2>
+<div class="back">
+    <h2>Your Shopping Cart</h2>
 
-<form asp-controller="Cart" asp-action="Checkout" method="post">
-    <h2>Delivery Infomation</h2>
-    <div>
-        <label asp-for="Email"></label>
-        <input asp-for="Email" />
-        <span asp-validation-for="Email"></span>
-    </div>
-    <div>
-        <label asp-for="address"></label>
-        <input asp-for="address" />
-        <span asp-validation-for="address"></span>
-    </div>
-    <div>
-        <label asp-for="postcode"></label>
-        <input asp-for="postcode" />
-        <span asp-validation-for="postcode"></span>
-    </div>
-    <div>
-        <label asp-for="Suburb"></label>
-        <input asp-for="Suburb" />
-        <span asp-validation-for="Suburb"></span>
-    </div>
+    <form asp-controller="Cart" asp-action="Checkout" method="post">
+        <h2>Delivery Infomation</h2>
+        <div>
+            <label asp-for="Email"></label>
+            <input asp-for="Email" />
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div>
+            <label asp-for="address"></label>
+            <input asp-for="address" />
+            <span asp-validation-for="address"></span>
+        </div>
+        <div>
+            <label asp-for="postcode"></label>
+            <input asp-for="postcode" />
+            <span asp-validation-for="postcode"></span>
+        </div>
+        <div>
+            <label asp-for="Suburb"></label>
+            <input asp-for="Suburb" />
+            <span asp-validation-for="Suburb"></span>
+        </div>
     
     
-    <div>
-        <label asp-for="state"></label>
-        <input asp-for="state" />
-        <span asp-validation-for="state"></span>
-    </div>
+        <div>
+            <label asp-for="state"></label>
+            <input asp-for="state" />
+            <span asp-validation-for="state"></span>
+        </div>
     
-    <div>
-        <label asp-for="PhoneNumber"></label>
-        <input asp-for="PhoneNumber" />
-        <span asp-validation-for="PhoneNumber"></span>
-    </div>
-    <h2> Debit Card</h2>
-    <div>
-        <label asp-for="CardNumber"></label>
-        <input asp-for="CardNumber" />
-        <span asp-validation-for="CardNumber"></span>
-    </div>
-    <div>
-        <label asp-for="CardOwner"></label>
-        <input asp-for="CardOwner" />
-        <span asp-validation-for="CardOwner"></span>
-    </div>
-    <div>
-        <label asp-for="Expiry"></label>
-        <input asp-for="Expiry" />
-        <span asp-validation-for="Expiry"></span>
-    </div>
-    <div>
-        <label asp-for="CVV"></label>
-        <input asp-for="CVV" />
-        <span asp-validation-for="CVV"></span>
-    </div>
+        <div>
+            <label asp-for="PhoneNumber"></label>
+            <input asp-for="PhoneNumber" />
+            <span asp-validation-for="PhoneNumber"></span>
+        </div>
+        <h2> Debit Card</h2>
+        <div>
+            <label asp-for="CardNumber"></label>
+            <input asp-for="CardNumber" />
+            <span asp-validation-for="CardNumber"></span>
+        </div>
+        <div>
+            <label asp-for="CardOwner"></label>
+            <input asp-for="CardOwner" />
+            <span asp-validation-for="CardOwner"></span>
+        </div>
+        <div>
+            <label asp-for="Expiry"></label>
+            <input asp-for="Expiry" />
+            <span asp-validation-for="Expiry"></span>
+        </div>
+        <div>
+            <label asp-for="CVV"></label>
+            <input asp-for="CVV" />
+            <span asp-validation-for="CVV"></span>
+        </div>
     
 
   
-    <div>
-        <button type="submit">pay</button>
-    </div>
-</form>  
+        <div>
+            <button type="submit">pay</button>
+        </div>
+    </form>  
+</div>

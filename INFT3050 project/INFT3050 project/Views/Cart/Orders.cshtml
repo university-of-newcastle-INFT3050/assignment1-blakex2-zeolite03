@@ -2,24 +2,26 @@
     
 @{
 }
-<h2> Your orders </h2>
-<tbody>
-    @foreach(var order in Model.order)
-    {
-        <tr>
-            <td>@order.OrderId</td>
-        </tr>
-        <tr>
-            <td>@order.Suburb</td>
-        </tr>
-        <tr>
-            <td>@order.StreetAddress</td>
-        </tr>
-        <tr>
-            <td>@order.postcode</td>
-        </tr>
-        <tr>
-            <td>@order.state</td>
-        </tr>
-    }
-</tbody>
+<div class="back">
+    <h2> Your orders </h2>
+    <tbody>
+        @foreach(var order in Model.order)
+        {
+            <tr>
+                <td>@order.OrderId</td>
+            </tr>
+            <tr>
+                <td>@order.Suburb</td>
+            </tr>
+            <tr>
+                <td>@order.StreetAddress</td>
+            </tr>
+            <tr>
+                <td>@order.postcode</td>
+            </tr>
+            <tr>
+                <td>@order.state</td>
+            </tr>
+        }
+    </tbody>
+</div>

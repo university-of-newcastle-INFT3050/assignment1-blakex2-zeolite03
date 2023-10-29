@@ -1,39 +1,40 @@
 ﻿@using INFT3050_project.ViewModels
 @model CartViewModel
+<div class="back"></div>
+    <h1>Cart</h1>
 
-<h1>Cart</h1>
 
-
-<table>
-    <thead>
-        <tr>
-            <th>Product</th>
-            <th>Price</th>
-        </tr>
-    </thead>
-    <tbody>
-       
-            @foreach (var product in Model.Products)
-            {
-                <tr>
-                    <td>@product.Name</td>
-                @foreach (var stocktake in Model.Stocktakes)
-                {
-                
-
-                    <td>Price: $@stocktake.Price</td>
-                
-
-                }
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
             </tr>
-            }
+        </thead>
+        <tbody>
+       
+                @foreach (var product in Model.Products)
+                {
+                    <tr>
+                        <td>@product.Name</td>
+                    @foreach (var stocktake in Model.Stocktakes)
+                    {
+                
 
-    </tbody>
-</table>
+                        <td>Price: $@stocktake.Price</td>
+                
 
-@if (Model.Products.Count > 0)
-{
-    <form asp-controller="Cart" asp-action="Checkout" method="get">
-        <button type="submit"> Checkout</button>
-    </form>
-}
+                    }
+                </tr>
+                }
+
+        </tbody>
+    </table>
+
+    @if (Model.Products.Count > 0)
+    {
+        <form asp-controller="Cart" asp-action="Checkout" method="get">
+            <button type="submit"> Checkout</button>
+        </form>
+    }
+</div>

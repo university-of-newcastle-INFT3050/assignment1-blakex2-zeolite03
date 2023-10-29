@@ -3,39 +3,40 @@
 @{
     ViewData["Title"] = "View";
 }
+<div class="back"
+    <h1>Edit Your Account</h1>
 
-<h1>View</h1>
-
-@*displays the relevant information for editing a patron account*@
-<div>
-    <form asp-controller="Account" asp-action="PatronAccountEdit" method="post">
+    @*displays the relevant information for editing a patron account*@
+    <div>
+        <form asp-controller="Account" asp-action="PatronAccountEdit" method="post">
         
 
-        <div class="form-group">
-            <label asp-for="Email"></label>
-            <input asp-for="Email" class="form-control" />
-            <span asp-validation-for="Email" class="text-danger"></span>
-        </div>
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
 
-        <div class="form-group">
-            <label asp-for="Name"></label>
-            <input asp-for="Name" class="form-control" />
-            <span asp-validation-for="Name" class="text-danger"></span>
-        </div>
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
 
-        <div class="form-group">
-            <label asp-for="CurrentPassword"></label>
-            <input asp-for="CurrentPassword" class="form-control" />
-            <span asp-validation-for="CurrentPassword" class="text-danger"></span>
-        </div>
+            <div class="form-group">
+                <label asp-for="CurrentPassword"></label>
+                <input asp-for="CurrentPassword" class="form-control" />
+                <span asp-validation-for="CurrentPassword" class="text-danger"></span>
+            </div>
 
-        <div class="form-group">
-            <label asp-for="NewPassword"></label>
-            <input asp-for="NewPassword" class="form-control" />
-            <span asp-validation-for="NewPassword" class="text-danger"></span>
-        </div>
+            <div class="form-group">
+                <label asp-for="NewPassword"></label>
+                <input asp-for="NewPassword" class="form-control" />
+                <span asp-validation-for="NewPassword" class="text-danger"></span>
+            </div>
 
-        <button type="submit" class="btn btn-primary">Save Changes</button>
-    </form>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
     
+    </div>
 </div>
