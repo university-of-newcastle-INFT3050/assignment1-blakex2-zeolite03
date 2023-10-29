@@ -75,6 +75,7 @@ public class CartController : Controller
         int userid = int.Parse(user);
         var to = new TO
         {
+            //just a placeholder this isnt fully finished by the end of the project
             customerID = 43,
             PatronId = userid,
             Email = model.Email,

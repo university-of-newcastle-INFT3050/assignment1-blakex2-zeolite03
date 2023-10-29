@@ -36,6 +36,7 @@
 
 @{
 }
+@* form to edit an item *@
 <div class="back">
     <h1>@Model.Product.Name</h1>
     <form asp-controller="Product" asp-action="Edit" method="post">
@@ -43,8 +44,8 @@
         <input type="text" value="@Model.Product.Author" id="Author" asp-for="@Model.Product.Author" />
         <input type="text" value="@Model.Product.Description" id="Description" asp-for="@Model.Product.Description" />
         <input type="datetime" value="@Model.Product.Published" id="Published" asp-for="@Model.Product.Published" />
- 
-
+ @* 
+        using a drop down menu to pick subgenre *@
         <div id="genre" class="form-group">
             <label asp-for="@Model.Product.genre">Genre</label>
             <select onchange="SubSelect()" asp-for="@Model.Product.genre" class="form-control">
