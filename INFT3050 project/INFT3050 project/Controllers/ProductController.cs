@@ -102,7 +102,9 @@ namespace INFT3050_project.Controllers
                     if (product.ID == 0)
                         context.Product.Add(product);
                     else
-                    //therwise, it will update a product based on the id supplied and the info inputted
+                        //therwise, it will update a product based on the id supplied and the info inputted
+                        // im sure its in the lecture but ill also reference this https://www.learnentityframeworkcore.com/dbcontext/modifying-data
+                        // just for like update and save changes
                         context.Product.Update(product);
                     context.SaveChanges();
                     return RedirectToAction("Index", "Home");
@@ -137,6 +139,7 @@ namespace INFT3050_project.Controllers
                 foreach (var item in stock)
                 {
                     //removes the stock
+                    // figure out remove from https://abhijitjana.net/2011/06/04/asp-net-internals-clearing-asp-net-session-variables-a-in-depth-look/
                     context.Stocktake.Remove(item);
                     context.SaveChanges();
                 }

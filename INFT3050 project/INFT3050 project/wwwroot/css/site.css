@@ -2,6 +2,7 @@ html {
     font-size: 14px;
 }
 
+/*using https://getbootstrap.com/docs/5.3/getting-started/introduction/*/
 @media (min-width: 768px) {
     html {
         font-size: 16px;
