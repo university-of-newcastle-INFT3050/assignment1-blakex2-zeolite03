@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.CompilerServices;
 
+//info for the book genre's
 namespace INFT3050_project.Models.Product.Subgenre
 {
     [Table("Book_genre")]

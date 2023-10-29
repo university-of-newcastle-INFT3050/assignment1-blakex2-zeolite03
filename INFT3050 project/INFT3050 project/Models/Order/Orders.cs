@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace INFT3050_project.Models.Order
 {
+    //info for the orders
     public class Orders
     {
         [Key]

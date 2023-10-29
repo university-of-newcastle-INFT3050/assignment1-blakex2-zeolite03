@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-
+//info for the cusomer
 namespace INFT3050_project.Models.Product
 {
     public class Customer

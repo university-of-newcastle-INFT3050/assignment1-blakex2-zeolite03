@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace INFT3050_project.Models.Product
 {
+    //info on the product
     public class Product
     {
 

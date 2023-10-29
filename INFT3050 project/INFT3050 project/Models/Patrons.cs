@@ -2,6 +2,7 @@
 //created by Eveleigh 6/08/2023 WIP
 namespace INFT3050_project.Models
 {
+    //info on the patrons
     public class Patrons
     {
         [Key]

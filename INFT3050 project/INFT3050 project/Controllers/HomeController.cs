@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using System.Diagnostics;
 using static INFT3050_project.ViewModels.HomePageViewModel;
 
+//handles most of the homepage actions including displaying products
 namespace INFT3050_project.Controllers
 {
     public class HomeController : Controller
@@ -17,7 +18,7 @@ namespace INFT3050_project.Controllers
         private readonly ISession _session;
 
 
-
+        
         private ShopContext context;
 
         List<Product> productlist = new List<Product> { };
@@ -47,56 +48,64 @@ namespace INFT3050_project.Controllers
         //    Patrons patron = context.Patrons.FirstOrDefault(p => p.UserId == patronId);
         //    return patron;
         //}
+
+
+        //the first page seen when using the site
+        //displays list of products to the user
         public IActionResult Index()
         {
 
-            //var genres = context.Genre.ToList();
-            //var _products = context.Product.OrderBy(t => t.Name).ToList();
-
-
-            //return View(_products);
+            //creates new view model
             var viewModel = new HomePageViewModel();
 
-            // Retrieve the user ID from the session (if needed)
+            //retrieve the user ID from the session (if needed)
             if (HttpContext.Session.GetString("UserId") != null)
             {
                 viewModel.UserId = HttpContext.Session.GetString("UserId");
                
                 
             }
-
+            //creates a list of all products
             viewModel.Products = context.Product
                 .OrderBy(product => product.Name)
                 .ToList();
-
+            //creates a list of the genre's
             viewModel.Genres = context.Genre
                 .ToList();
 
             return View(viewModel);
 
         }
-
+        //displays detailed information about a product
         public IActionResult Details(int id)
         {
+            //creates a view model based on the inputted product id the user selected
             ProductViewModel model = new ProductViewModel()
             {
                 Product = context.Product.Find(id),
                 SubGenreViewModel = ShopManager.GetViewModel(context)
             };
-
+            //returns the product via a view model
             return View(model);
         }
+        //adds a product to the shopping cart
         public IActionResult AddToCart(int id)
         {
+            //takes in the users id from the session
             var user = HttpContext.Session.GetString("UserId");
+            //checks if there is a user
             if (user != null)
             {
+                //gets previous information about the car from the session
                 var StoreCart = HttpContext.Session.GetString("Cart");
                 //
+                //creates a list based on the sessions json info
                 var Cart = string.IsNullOrEmpty(StoreCart) ? new List<Product>() : JsonConvert.DeserializeObject<List<Product>>(StoreCart);
-                
+                //gets the current product selected and finds the product object via its id
                 var product = context.Product.FirstOrDefault(u => u.ID == id);
+                //add the product to the list
                 Cart.Add(product);
+                //converts the list back to a json and them sets it in the session again
                 var newCart = JsonConvert.SerializeObject(Cart);
                 HttpContext.Session.SetString("Cart", newCart);
 
@@ -106,6 +115,7 @@ namespace INFT3050_project.Controllers
             }
             else
             {
+                
                 return RedirectToAction("LoginPage", "Login");
             }
             

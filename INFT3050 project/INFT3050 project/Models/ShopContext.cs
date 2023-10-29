@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using INFT3050_project.Models;
 namespace INFT3050_project.Models
 {
+    //shop context class handles most information needed for the database and the relevant object
     public class ShopContext : DbContext
     {
         public ShopContext(DbContextOptions<ShopContext> options)
