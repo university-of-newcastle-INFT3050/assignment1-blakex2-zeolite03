@@ -1,4 +1,5 @@
-﻿namespace INFT3050_project.ViewModels
+﻿using System.ComponentModel.DataAnnotations;
+namespace INFT3050_project.ViewModels
 {
     public class LayoutViewModel
     {

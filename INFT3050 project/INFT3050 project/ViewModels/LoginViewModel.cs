@@ -7,19 +7,22 @@ namespace INFT3050_project.ViewModels
     public class LoginViewModel
     {
 
-        //public string ActiveConf { get; set; } = "all";
-        //public string ActiveDiv { get; set; } = "all";
+      
         public string UserName { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "Please Enter a Password")]
+        [DataType(DataType.Password)]
+        [StringLength(100)]
         public string HashPW { get; set; }
         public int UserId { get; set; }
-        [Required]
-        public string Email { get; set; }
-        public string Name { get; set; }
-        //public string CheckActiveConf(string c) =>
-        //    c.ToLower() == ActiveConf.ToLower() ? "active" : "";
 
-        //public string CheckActiveDiv(string d) =>
-        //    d.ToLower() == ActiveDiv.ToLower() ? "active" : "";
+        [Required(ErrorMessage ="Please Enter an Email Address")]
+        [EmailAddress]
+        [StringLength(50)]
+        public string Email { get; set; }
+        [Required(ErrorMessage = "Please Enter a Name")]
+        [StringLength(20)]
+        public string Name { get; set; }
+       
     }
 }

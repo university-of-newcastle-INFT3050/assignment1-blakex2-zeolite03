@@ -47,6 +47,11 @@
 
 
     <h1> Editor</h1>
+    <div>
+        <form asp-controller="Product" asp-action="Add" method="get">
+            <button type="submit"> Add new Item</button>
+        </form>
+    </div>
     <h2 style="padding: 20px"><u>Movies</u></h2>
     <table>
         <tr>
@@ -65,9 +70,10 @@
                     
                     <td>@product.Author</td>
                    <td><a asp-controller="Product" asp-action="Edit" title="Edit" asp-route-id="@product.ID">Edit</a>
-                    </td>
-
-
+                        <form asp-controller="Product" asp-action="Delete" method="post">
+                            <input type="hidden" name="id" value="@product.ID" />
+                            <button type="submit"> Delete</button>
+                        </form>
                 </tr>
             }
         }

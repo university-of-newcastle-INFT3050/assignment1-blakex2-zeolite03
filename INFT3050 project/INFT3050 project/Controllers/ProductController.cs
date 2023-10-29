@@ -36,9 +36,10 @@ namespace INFT3050_project.Controllers
             var products = context.Product.ToList();
             return View(products);
         }
+       
 
-        // GET: ProductController/Details/5
-        public ActionResult Details(int id)
+            // GET: ProductController/Details/5
+            public ActionResult Details(int id)
         {
             return View();
         }
@@ -113,24 +114,47 @@ namespace INFT3050_project.Controllers
         }
 
         // GET: ProductController/Delete/5
-        public ActionResult Delete(int id)
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            var product = context.Product.Find(id);
+            var stock = context.Stocktake.Where(u=>u.ProductId == id);
+            if (stock != null)
+            {
+                foreach (var item in stock)
+                {
+                    context.Stocktake.Remove(item);
+                    context.SaveChanges();
+                }
+
+                }
+            context.Product.Remove(product);
+            context.SaveChanges();
+
+            return RedirectToAction("HomePage", "Home");
+        }
+
+        [HttpGet]
+        public IActionResult Add()
         {
             return View();
         }
 
-        // POST: ProductController/Delete/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public IActionResult AddItem(AddItemViewModel model) 
         {
-            try
+            var NewItem = new Product
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+                Name = model.Name,
+                Description = model.Description,
+                Author = model.Author
+
+            };
+
+            return RedirectToAction("HomePage", "Home");
         }
+
+
+
     }
 }

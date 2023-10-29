@@ -1,6 +1,7 @@
 ﻿using INFT3050_project.Models.Product;
 using INFT3050_project.Models.Product.Subgenre;
 using Microsoft.Identity.Client;
+using System.ComponentModel.DataAnnotations;
 
 namespace INFT3050_project.ViewModels
 {

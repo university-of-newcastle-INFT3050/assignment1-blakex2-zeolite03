@@ -1,4 +1,5 @@
 ﻿using INFT3050_project.Models.Order;
+using System.ComponentModel.DataAnnotations;
 
 namespace INFT3050_project.ViewModels
 {

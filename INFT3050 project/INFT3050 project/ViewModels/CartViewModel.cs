@@ -1,6 +1,7 @@
 ﻿using INFT3050_project.Models.Product;
 using INFT3050_project.Models;
 using INFT3050_project.Models.Stocktake;
+using System.ComponentModel.DataAnnotations;
 
 namespace INFT3050_project.ViewModels
 {     
