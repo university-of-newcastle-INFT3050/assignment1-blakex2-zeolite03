@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace INFT3050_project.Models.Order
 {
+    //info for the product in orders
     public class ProductsInOrders
     {
         [Key]

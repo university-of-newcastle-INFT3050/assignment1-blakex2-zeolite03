@@ -1,5 +1,6 @@
 ﻿namespace INFT3050_project.Models.Stocktake
 {
+    //info on the source
     public class Source
     {
         public int sourceid { get; set; }

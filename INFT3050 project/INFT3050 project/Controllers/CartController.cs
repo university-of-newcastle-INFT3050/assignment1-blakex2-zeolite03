@@ -9,29 +9,34 @@ using System.Composition;
 using System.Net;
 using static NuGet.Packaging.PackagingConstants;
 
+//the controller for handling all shopping cart actions
 public class CartController : Controller
 {
     private ShopContext context;
 
+    //creates the shopcontext for the controller
     public CartController(ShopContext ctx)
     {
         context = ctx;
     }
 
-
+    //unimplempented
     public IActionResult Checkout()
     {
 
         return View();
     }
-
+    //shows the details of the cart created by the user/patron
     public IActionResult CartDetails()
     {
+        //calls the session to make a string that conatins a list of the products ID's
         string products = HttpContext.Session.GetString("productlist");
 
         // Split the string into a list of strings
         var Cart = HttpContext.Session.GetString("Cart");
         var Cart2 = string.IsNullOrEmpty(Cart) ? new List<Product>() : JsonConvert.DeserializeObject<List<Product>>(Cart);
+        //creates a list for the stock take object and compares the product id to the stocktake table to find matching stock take objects.
+        //takes these matching objects and puts them into a list
         List<Stocktake> stocktakeList = new List<Stocktake>();
         foreach(Product product in Cart2)
         {
@@ -43,19 +48,22 @@ public class CartController : Controller
                 ProductId = product.ID,
              };
         }
+        //updates the view model based on this info
         var viewModel = new CartViewModel
         {
             Stocktakes = stocktakeList,
             Products = Cart2
         };
         
-
+        //returns the view with this info
         return View(viewModel);
     }
 
+    //not properly implemented
     [HttpPost]
     public IActionResult Checkout(OrderViewModel model)
     {
+        //test variables for adding to database
         var user = HttpContext.Session.GetString("UserId");
         int userid = int.Parse(user);
         var to = new TO
@@ -89,22 +97,26 @@ public class CartController : Controller
 
         
     }
-
+    //shows the user the orders
+    //unimplemented
     public IActionResult Orders()
     {
+        //calls userid info
         var user = HttpContext.Session.GetString("UserId");
         //reference this
-        
+        //creates a new list to store order
         List<Orders> orders = new List<Orders>();
+        //goes through the database to find the patrons order info 
         var to = context.TO.Where(u =>u.PatronId.ToString() == user).ToList();
         foreach(var item in to)
         {
+            //adds the order info
             orders = context.Orders.Where(u => u.customer == item.customerID).ToList();
         }
         var NewOrder = new OrderScreenViewModel();
         NewOrder.order = orders;
 
-        
+        //returns the info to the page
         return View(NewOrder);
     }
 }

@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace INFT3050_project.Controllers
 {
+    //handles the product editing 
     public class ProductController : Controller
     {
         public ShopContext context;
+
+        //creates the shopcontext for the controller
         public ProductController(ShopContext ctx)
         {
             this.context = ctx;
@@ -21,7 +24,7 @@ namespace INFT3050_project.Controllers
             var _products = context.Product.OrderBy(t => t.Name).ToList();
             return View(_products);
         }
-
+        //shows the homepage for the product editing
         public IActionResult HomePage()
         {
             var genres = context.Genre.ToList();
@@ -29,7 +32,7 @@ namespace INFT3050_project.Controllers
 
             return View(products);
         }
-
+        //does the same but for different call
         public IActionResult EditorView()
         {
             var genres = context.Genre.ToList();
@@ -38,19 +41,21 @@ namespace INFT3050_project.Controllers
         }
        
 
-            // GET: ProductController/Details/5
-            public ActionResult Details(int id)
+
+        // GET: ProductController/Details/5
+        public ActionResult Details(int id)
+
         {
             return View();
         }
 
-        // GET: ProductController/Create
+      
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: ProductController/Create
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -65,21 +70,23 @@ namespace INFT3050_project.Controllers
             }
         }
 
-        // GET: ProductController/Edit/5
+        //generates a page based on the selected product
         public ActionResult Edit(int id)
         {
+            //creates a new view model for the product
             ProductViewModel model = new ProductViewModel()
             {
+                //finds the product based on the associated id and adds it to the view model
                 Product = context.Product.Find(id),
                 SubGenreViewModel = ShopManager.GetViewModel(context)
             };
-            
+            //returns the product info to the page
             return View(model);
         }
 
        
 
-            // POST: ProductController/Edit/5
+            //edits the product
             [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Product product)
@@ -87,12 +94,14 @@ namespace INFT3050_project.Controllers
             var name = Request.Form["Name"];
             try
             {
-
+                //checks if info on edited product is valid for requirements
                 if (ModelState.IsValid)
                 {
+                    //if the product has an id of 0, it is a new product
                     if (product.ID == 0)
                         context.Product.Add(product);
                     else
+                    //therwise, it will update a product based on the id supplied and the info inputted
                         context.Product.Update(product);
                     context.SaveChanges();
                     return RedirectToAction("Index", "Home");
@@ -112,6 +121,7 @@ namespace INFT3050_project.Controllers
                 return View();
             }
         }
+
 
         // GET: ProductController/Delete/5
         [HttpPost]
@@ -136,9 +146,11 @@ namespace INFT3050_project.Controllers
 
         [HttpGet]
         public IActionResult Add()
+
         {
             return View();
         }
+
 
         [HttpPost]
         public IActionResult AddItem(AddItemViewModel model) 

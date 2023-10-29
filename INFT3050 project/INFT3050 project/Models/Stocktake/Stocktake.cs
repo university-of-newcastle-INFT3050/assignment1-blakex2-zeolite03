@@ -1,6 +1,7 @@
 ﻿namespace INFT3050_project.Models.Stocktake
 
 {
+    //info on the stocktake
     public class Stocktake
     {
        

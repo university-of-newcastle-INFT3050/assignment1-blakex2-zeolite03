@@ -13,28 +13,30 @@ using NuGet.Packaging.Signing;
 
 namespace INFT3050_project.Controllers
 {
+    //handles the login process and pages
     public class LoginController : Controller
     {
 
         public ShopContext context;
 
+        //sets the shopcontext for the controller
         public LoginController(ShopContext ctx)
         {
             this.context = ctx;
         }
-        // GET: LoginController
+       
         public ActionResult index()
         {
             return View();
         }
 
-        // GET: LoginController/Details/5
+        
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: LoginController/Create
+      
         public ActionResult Create()
         {
             return View();
@@ -42,12 +44,10 @@ namespace INFT3050_project.Controllers
 
         public IActionResult CreateAccountPage()
         {
-
-
             return View();
         }
 
-        // POST: LoginController/Create
+        // POST: 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -62,14 +62,14 @@ namespace INFT3050_project.Controllers
             }
         }
 
-        // GET: LoginController/Edit/5
+        //gets the account id an returns it
         public ActionResult Edit(int id)
         {
             Patrons patron = context.Patrons.Find(id);
             return View();
         }
 
-        // POST: LoginController/Edit/5
+        //edits the account information based on the form submitted and the associated account
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -84,13 +84,13 @@ namespace INFT3050_project.Controllers
             }
         }
 
-        // GET: LoginController/Delete/5
+        //shows the delete page
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: LoginController/Delete/5
+        //deletes the account based on the form and the associated account id
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
@@ -104,20 +104,19 @@ namespace INFT3050_project.Controllers
                 return View();
             }
         }
-
+        //returns login page
         public ActionResult LoginPage(int id)
         {
 
             return View();
         }
 
-
+        //handles the log in page
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LoginPage(LoginViewModel model)
         {
-
-           
+            //check to ensure the users email and the hashed password matches the hashed password and email on the database
             if (IsValidUser(model.Email, model.HashPW))
             {
                 var user = context.Patrons.FirstOrDefault(u => u.Email == model.Email);
@@ -156,7 +155,8 @@ namespace INFT3050_project.Controllers
                 ModelState.AddModelError(string.Empty, "Invalid login attempt.");
             return View(model);
         }
-
+        //checks to ensure th user is valid by taking their email and password, hashing the password with the associated salt, then comparing that password
+        //to the databases hashed password
         private bool IsValidUser(string email, string password)
         {
             bool IsValid;
@@ -209,47 +209,40 @@ namespace INFT3050_project.Controllers
             return IsValid;
         }
 
-        //public IActionResult LoginRecovery()
-        //{
-        //    return View();
-        //}
-
+        //initiates the login recovery process by showing the recovery page to start
         public IActionResult LoginRecovery(string email)
         {
+            //checks to see if an email was inputted
             if (!string.IsNullOrEmpty(email))
             {
+                //creates a context for the user
                 var userList = context.User.ToList();
                 var patronList = context.Patrons.ToList();
-
-                //foreach (var user in userList)
-                //{
-                //    if (user.Email.Equals(email))
-                //    {
-                //        return RedirectToAction("LoginRecoverySuccess", user);
-                //    }
-                //}
+                //checks to see if the email entered in recovery matches a email in the database
                 foreach (var patron in patronList)
                 {
                     if (patron.Email.Equals(email))
                     {
+                        //returns the page for simulating an email
                         return RedirectToAction("LoginRecoveryEmail", patron);
                     }
                 }
             }
-            
+            //returns nothing if it does not satisfy above conditions
             return View();
         }
-
+        //shows the simulated page for a login recovery email
         public ActionResult LoginRecoveryEmail(LoginViewModel Model)
         {
             return View(Model);
         }
-        
+        //changes the password of the user based on their input
         public ActionResult LoginRecoveryReset(LoginViewModel Model, String Password)
         {
-
+            //ensures the password is not nothing
             if (!string.IsNullOrEmpty(Password))
             {
+                //takes the massword, hashes it with the associated accounts salt, then ovverwrites the previous password
                 Model.HashPW= Password;
                 string salt = BCrypt.Net.BCrypt.GenerateSalt();
                 //string saltedPassword = model.HashPW + salt;
@@ -271,27 +264,32 @@ namespace INFT3050_project.Controllers
             }
             return View(Model);
         }
-   
+        //displays the page for a successful login recovery/password change
         public IActionResult LoginRecoverySuccess()
         { return View(); }
 
-
+        //shows the account creation page
         public IActionResult CreateAccount()
         {
 
             return View("CreateAccountPage");
         }
 
+        //performs the action of adding an account to the database
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Register(LoginViewModel model)
             //added check to see if user already exists
         {
+            //checks the model inputted satisfies the requirements for an account
             if (ModelState.IsValid)
             {
+                //generates a salt unique to the account
                 string salt = BCrypt.Net.BCrypt.GenerateSalt();
                 //string saltedPassword = model.HashPW + salt;
+                //hashes the password based on the salt
                 string HashedPassword = BCrypt.Net.BCrypt.HashPassword(model.HashPW, salt);
+                //creates a new patron with relevant info
                 var NewPatron = new Patrons
                 {
                    
@@ -302,6 +300,7 @@ namespace INFT3050_project.Controllers
                     
                     
                 };
+                //adds the patron to the database
                 context.Patrons.Add(NewPatron); 
                 context.SaveChanges();
                 return RedirectToAction("HomePage", "Home");

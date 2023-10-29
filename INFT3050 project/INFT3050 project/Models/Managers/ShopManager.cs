@@ -3,6 +3,7 @@ using INFT3050_project.ViewModels;
 
 namespace INFT3050_project.Models.Managers
 {
+    //handles the genres for the products
     public static class ShopManager
     {
         public static SubGenreViewModel GetViewModel(ShopContext context)

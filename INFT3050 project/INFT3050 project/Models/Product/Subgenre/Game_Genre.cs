@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-
+//info for the movie genre
 namespace INFT3050_project.Models.Product.Subgenre
 {
     [Table("Movie_Genre")]

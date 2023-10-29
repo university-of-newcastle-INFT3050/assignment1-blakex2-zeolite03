@@ -1,5 +1,6 @@
 ﻿namespace INFT3050_project.Models
 {
+    //handles session data
     public class ShopSession
     {
         private ISession session { get; set; }
